@@ -1,0 +1,2066 @@
+<meta charset="UTF-8">
+<title>AZ-900 — Path to Certification</title>
+<style>
+  @font-face {
+    font-family: 'Plex Mono';
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url(data:font/woff2;base64,__PLEXMONO_BOLD__) format('woff2');
+  }
+  @font-face {
+    font-family: 'Plex Sans';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url(data:font/woff2;base64,__PLEXSANS_REG__) format('woff2');
+  }
+  @font-face {
+    font-family: 'Plex Sans';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url(data:font/woff2;base64,__PLEXSANS_SEMI__) format('woff2');
+  }
+  @font-face {
+    font-family: 'Plex Sans';
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url(data:font/woff2;base64,__PLEXSANS_BOLD__) format('woff2');
+  }
+
+  :root {
+    --ink: #101826;
+    --paper: #eef1f5;
+    --panel: #ffffff;
+    --line: #c7d2e0;
+    --structural: #2e5a88;
+    --accent: #c96a12;
+    --accent-ink: #ffffff;
+    --muted: #57667d;
+    --grid-line: rgba(46, 90, 136, 0.07);
+    --shadow: rgba(16, 24, 38, 0.08);
+    --good: #2f7d4f;
+    --good-bg: rgba(47, 125, 79, 0.1);
+    --bad: #b23b3b;
+    --bad-bg: rgba(178, 59, 59, 0.09);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e8eef6;
+      --paper: #0b1420;
+      --panel: #121d2e;
+      --line: #22334a;
+      --structural: #6fa8dc;
+      --accent: #e8933f;
+      --accent-ink: #1a1002;
+      --muted: #8ca0bc;
+      --grid-line: rgba(111, 168, 220, 0.06);
+      --shadow: rgba(0, 0, 0, 0.35);
+      --good: #6fbf8b;
+      --good-bg: rgba(111, 191, 139, 0.12);
+      --bad: #e0847e;
+      --bad-bg: rgba(224, 132, 126, 0.12);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e8eef6;
+    --paper: #0b1420;
+    --panel: #121d2e;
+    --line: #22334a;
+    --structural: #6fa8dc;
+    --accent: #e8933f;
+    --accent-ink: #1a1002;
+    --muted: #8ca0bc;
+    --grid-line: rgba(111, 168, 220, 0.06);
+    --shadow: rgba(0, 0, 0, 0.35);
+    --good: #6fbf8b;
+    --good-bg: rgba(111, 191, 139, 0.12);
+    --bad: #e0847e;
+    --bad-bg: rgba(224, 132, 126, 0.12);
+  }
+  :root[data-theme="light"] {
+    --ink: #101826;
+    --paper: #eef1f5;
+    --panel: #ffffff;
+    --line: #c7d2e0;
+    --structural: #2e5a88;
+    --accent: #c96a12;
+    --accent-ink: #ffffff;
+    --muted: #57667d;
+    --grid-line: rgba(46, 90, 136, 0.07);
+    --shadow: rgba(16, 24, 38, 0.08);
+    --good: #2f7d4f;
+    --good-bg: rgba(47, 125, 79, 0.1);
+    --bad: #b23b3b;
+    --bad-bg: rgba(178, 59, 59, 0.09);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0, var(--grid-line) 1px, transparent 1px, transparent 32px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0, var(--grid-line) 1px, transparent 1px, transparent 32px),
+      var(--paper);
+    color: var(--ink);
+    font-family: 'Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--structural); }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .mono {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .eyebrow {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--structural);
+  }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+  }
+
+  header.masthead {
+    border-bottom: 2px solid var(--structural);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  h1 {
+    font-family: 'Plex Sans', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.15;
+    text-wrap: balance;
+    margin: 0.35rem 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .dek {
+    color: var(--muted);
+    max-width: 60ch;
+    margin: 0;
+    font-size: 0.98rem;
+  }
+
+  .countdown {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .countdown .num {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 2.6rem;
+    line-height: 1;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown .unit {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .countdown .date {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--structural);
+    margin-top: 0.15rem;
+  }
+
+  /* domain weight bar */
+  .domains {
+    margin-top: 1.4rem;
+  }
+  .domains-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+  }
+  .bar {
+    display: flex;
+    height: 10px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .bar span { display: block; height: 100%; }
+  .bar .d1 { background: var(--structural); opacity: 0.55; }
+  .bar .d2 { background: var(--structural); opacity: 0.8; }
+  .bar .d3 { background: var(--structural); opacity: 1; }
+  .legend {
+    display: flex;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.6rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .legend .sw {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+  .legend .sw.d1 { background: var(--structural); opacity: 0.55; }
+  .legend .sw.d2 { background: var(--structural); opacity: 0.8; }
+  .legend .sw.d3 { background: var(--structural); opacity: 1; }
+  .legend b { color: var(--ink); font-weight: 600; }
+
+  /* view tabs */
+  .view-tabs {
+    display: flex;
+    gap: 1.6rem;
+    border-bottom: 1px solid var(--line);
+    margin: 1.6rem 0 0;
+    overflow-x: auto;
+  }
+  .tab-btn {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.7rem 0.1rem;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--structural); }
+  .tab-btn.active { color: var(--ink); border-bottom-color: var(--accent); }
+
+  .view-panel { padding-top: 1.6rem; }
+
+  /* overall progress */
+  .progress-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.8rem 0 2.2rem;
+    padding: 0.9rem 1rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+  }
+  .progress-track {
+    flex: 1;
+    height: 6px;
+    background: var(--grid-line);
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+  #progress-text {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    color: var(--muted);
+  }
+  #progress-text b { color: var(--ink); }
+
+  /* week panels */
+  .week {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    margin-bottom: 1.4rem;
+    box-shadow: 0 1px 0 var(--shadow);
+  }
+  .week-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .week-tab {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .week-tab .n {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--paper);
+    background: var(--structural);
+    padding: 0.2rem 0.5rem;
+  }
+  .week-tab .dates {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .week-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0.4rem 0 0.2rem;
+  }
+  .week-goal {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0;
+    max-width: 56ch;
+  }
+  .week-meta {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .week-meta .hrs {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: var(--structural);
+  }
+  .week-meta .domweight {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  .tasks {
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem 1.2rem 1rem;
+  }
+  .tasks li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .tasks li:last-child { border-bottom: none; }
+  .tasks input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 17px;
+    height: 17px;
+    border: 1.5px solid var(--structural);
+    background: var(--panel);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    cursor: pointer;
+    position: relative;
+  }
+  .tasks input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .tasks input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid var(--accent-ink);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .tasks label {
+    cursor: pointer;
+    font-size: 0.94rem;
+  }
+  .tasks li.done label { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+  .tasks .t {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.76rem;
+    color: var(--muted);
+    white-space: nowrap;
+    margin-left: auto;
+    padding-left: 0.6rem;
+  }
+
+  /* resources */
+  .resources {
+    margin-top: 2.2rem;
+    border: 1px solid var(--line);
+    background: var(--panel);
+  }
+  .resources h2 {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--structural);
+    margin: 0;
+    padding: 0.9rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .res-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .res-item {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .res-grid .res-item:nth-last-child(-n+2) { border-bottom: none; }
+  @media (max-width: 520px) {
+    .res-grid .res-item { border-bottom: 1px solid var(--line); }
+    .res-grid .res-item:last-child { border-bottom: none; }
+  }
+  .res-item .label {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .res-item a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .res-item a:hover { text-decoration: underline; }
+  .res-item .desc {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  /* glossary */
+  .glossary-controls {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  }
+  .glossary-search {
+    flex: 1;
+    min-width: 180px;
+    font-family: 'Plex Sans', system-ui, sans-serif;
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 0.55rem 0.8rem;
+  }
+  .glossary-search::placeholder { color: var(--muted); }
+  .chip-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .chip {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.65rem;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .chip.active { color: var(--accent-ink); background: var(--structural); border-color: var(--structural); }
+  .glossary-count {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+  .glossary-list { border: 1px solid var(--line); background: var(--panel); }
+  .g-item {
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+  }
+  .g-item:last-child { border-bottom: none; }
+  .g-term {
+    font-weight: 600;
+    font-size: 0.94rem;
+    flex-shrink: 0;
+    min-width: 12ch;
+  }
+  .g-def { color: var(--muted); font-size: 0.88rem; flex: 1; }
+  .g-dom {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.65rem;
+    color: var(--structural);
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 0.15rem;
+  }
+  @media (max-width: 560px) {
+    .g-item { flex-wrap: wrap; }
+    .g-dom { order: -1; }
+  }
+
+  /* quiz */
+  .subtabs {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .subtab-btn {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+  }
+  .subtab-btn.active { color: var(--accent-ink); background: var(--structural); border-color: var(--structural); }
+  .q-stat {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    float: right;
+  }
+  .q-stat[hidden] { display: none; }
+  .q-retry {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--structural);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .q-retry:hover { text-decoration: underline; }
+  .q-retry[hidden] { display: none; }
+
+  .quiz-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.7rem 1rem;
+    padding: 0.9rem 1rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    margin-bottom: 1.4rem;
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.85rem;
+  }
+  .quiz-score b { color: var(--ink); }
+  .sim-timer-group { display: flex; align-items: center; gap: 0.6rem; }
+  .sim-timer {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .sim-timer.expired { color: var(--bad); }
+  .sim-timer-btn {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: var(--structural);
+    background: none;
+    border: 1px solid var(--structural);
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+  }
+  .sim-timer-btn:hover { background: var(--structural); color: var(--accent-ink); }
+
+  /* backup bar */
+  .backup-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem 1rem;
+    margin-top: 1.2rem;
+    padding: 0.7rem 1rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+  }
+  .backup-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .backup-btn {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+  }
+  .backup-btn:hover { border-color: var(--structural); color: var(--structural); }
+  .theme-btn { margin-left: 0.4rem; min-width: 5.2rem; }
+  .backup-status {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .quiz-reset {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--structural);
+    background: none;
+    border: 1px solid var(--structural);
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+  }
+  .quiz-reset:hover { background: var(--structural); color: var(--accent-ink); }
+  .sim-finish { color: var(--accent); border-color: var(--accent); }
+  .sim-finish:hover { background: var(--accent); color: var(--accent-ink); }
+  .sim-results {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    padding: 1.1rem 1.2rem 1.2rem;
+    margin-bottom: 1.6rem;
+  }
+  .sim-results[hidden] { display: none; }
+  .res-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1.2rem; margin-bottom: 0.4rem; }
+  .res-big { font-family: 'Plex Mono', ui-monospace, monospace; font-size: 2rem; font-weight: 700; color: var(--ink); }
+  .res-pct { font-family: 'Plex Mono', ui-monospace, monospace; font-size: 1.3rem; font-weight: 700; }
+  .res-verdict { font-size: 0.9rem; color: var(--muted); margin: 0 0 0.3rem; }
+  .res-trend { font-size: 0.78rem; color: var(--muted); margin: 0 0 0.6rem; }
+  .res-title {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--structural); margin: 1.1rem 0 0.5rem;
+  }
+  .res-row { display: grid; grid-template-columns: minmax(9rem, 16rem) 1fr auto; align-items: center; gap: 0.6rem; margin: 0.32rem 0; font-size: 0.86rem; }
+  .res-row.head { color: var(--muted); font-size: 0.7rem; font-family: 'Plex Mono', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.06em; }
+  .res-label { color: var(--ink); line-height: 1.25; }
+  .res-label em { font-style: normal; color: var(--muted); font-size: 0.75rem; margin-left: 0.3rem; white-space: nowrap; }
+  .res-label .res-code { font-family: 'Plex Mono', ui-monospace, monospace; color: var(--structural); margin-right: 0.35rem; }
+  .res-track { position: relative; height: 0.9rem; background: var(--grid-line); border: 1px solid var(--line); overflow: hidden; }
+  .res-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--structural); transition: width 0.4s ease; }
+  .res-fill.good { background: var(--good); }
+  .res-fill.ok { background: var(--structural); }
+  .res-fill.warn { background: var(--accent); }
+  .res-fill.bad { background: var(--bad); }
+  .res-passline { position: absolute; top: -1px; bottom: -1px; left: 70%; width: 0; border-left: 2px dashed var(--ink); opacity: 0.55; }
+  .res-val { font-family: 'Plex Mono', ui-monospace, monospace; font-size: 0.8rem; color: var(--ink); white-space: nowrap; text-align: right; }
+  .res-val .res-all { color: var(--muted); font-size: 0.72rem; display: block; }
+  .res-val.none, .res-label.none { color: var(--muted); }
+  .res-good { color: var(--good); } .res-bad { color: var(--bad); } .res-warn { color: var(--accent); }
+  .res-study { list-style: none; padding: 0; margin: 0; }
+  .res-study li { padding: 0.65rem 0.8rem; margin: 0.45rem 0; border: 1px solid var(--line); background: var(--paper); font-size: 0.86rem; line-height: 1.45; }
+  .res-study li b { color: var(--ink); }
+  .res-study li .res-missed { display: block; font-family: 'Plex Mono', ui-monospace, monospace; font-size: 0.72rem; color: var(--muted); margin-top: 0.3rem; }
+  .res-note { font-size: 0.8rem; color: var(--muted); margin: 0.7rem 0 0; }
+  .res-jump { color: var(--structural); text-decoration: underline; margin-right: 0.2rem; }
+  @media (max-width: 560px) {
+    .res-row { grid-template-columns: 1fr auto; }
+    .res-row .res-track { grid-column: 1 / -1; }
+    .res-row.head .res-track { display: none; }
+  }
+  .quiz-q {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    margin-bottom: 1rem;
+    padding: 1rem 1.1rem;
+  }
+  .quiz-q .q-dom {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: var(--structural);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .quiz-q .q-text { font-weight: 600; font-size: 0.96rem; margin: 0 0 0.8rem; text-wrap: balance; }
+  .q-opts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .q-opt {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-family: 'Plex Sans', system-ui, sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+  }
+  .q-opt:hover:not(:disabled) { border-color: var(--structural); }
+  .q-opt:disabled { cursor: default; }
+  .q-opt.correct { background: var(--good-bg); border-color: var(--good); color: var(--good); font-weight: 600; }
+  .q-opt.incorrect { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+  .q-explain {
+    margin: 0.8rem 0 0;
+    padding-top: 0.8rem;
+    border-top: 1px dashed var(--line);
+    font-size: 0.86rem;
+    color: var(--muted);
+  }
+  .q-explain b { color: var(--ink); }
+
+  /* flashcards */
+  .fc-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .fc-progress b { color: var(--ink); }
+  .fc-stage {
+    perspective: 1200px;
+    max-width: 480px;
+    margin: 0 auto 1.2rem;
+  }
+  .fc-card {
+    position: relative;
+    height: 220px;
+    cursor: pointer;
+  }
+  .fc-inner {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.45s cubic-bezier(.4,.2,.2,1);
+    transform-style: preserve-3d;
+  }
+  .fc-card.flipped .fc-inner { transform: rotateY(180deg); }
+  .fc-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    box-shadow: 0 1px 0 var(--shadow);
+  }
+  .fc-face .fc-tag {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--structural);
+    position: absolute;
+    top: 0.8rem;
+    left: 1rem;
+  }
+  .fc-face .fc-hint {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    position: absolute;
+    bottom: 0.8rem;
+  }
+  .fc-front .fc-text { font-weight: 700; font-size: 1.2rem; }
+  .fc-back { transform: rotateY(180deg); }
+  .fc-back .fc-text { font-size: 0.95rem; color: var(--muted); max-width: 40ch; }
+  .fc-card.mastered .fc-face { border-color: var(--good); }
+  .fc-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .fc-btn {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 0.55rem 0.9rem;
+    cursor: pointer;
+  }
+  .fc-btn:hover { border-color: var(--structural); color: var(--structural); }
+  .fc-btn.primary { border-color: var(--accent); color: var(--accent); }
+  .fc-btn.mastered-btn.on { background: var(--good); border-color: var(--good); color: var(--accent-ink); }
+  @media (prefers-reduced-motion: reduce) {
+    .fc-inner { transition: none; }
+  }
+
+  /* notes */
+  .note-week {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    margin-bottom: 1rem;
+  }
+  .note-week-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.7rem 1.1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .note-week-head .n {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--paper);
+    background: var(--structural);
+    padding: 0.15rem 0.45rem;
+    margin-right: 0.6rem;
+  }
+  .note-week-head .save-state {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+  }
+  .note-week textarea {
+    display: block;
+    width: 100%;
+    min-height: 110px;
+    resize: vertical;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+    font-family: 'Plex Sans', system-ui, sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    padding: 0.9rem 1.1rem;
+  }
+  .note-week textarea:focus { outline: none; background: var(--grid-line); }
+  .note-week textarea::placeholder { color: var(--muted); }
+
+  footer.note {
+    margin-top: 2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  footer.note code {
+    font-family: 'Plex Mono', ui-monospace, monospace;
+    background: var(--grid-line);
+    padding: 0.1rem 0.3rem;
+  }
+
+  @media (max-width: 560px) {
+    .masthead-top { flex-direction: column; }
+    .countdown { text-align: left; }
+    .week-meta { text-align: left; }
+  }
+</style>
+
+<div class="wrap">
+  <script>
+    // Apply the saved theme before first paint; no saved value = follow the OS setting.
+    try {
+      var savedTheme = localStorage.getItem('az900-theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') document.documentElement.setAttribute('data-theme', savedTheme);
+    } catch (e) { /* storage unavailable */ }
+  </script>
+  <header class="masthead">
+    <div class="masthead-top">
+      <div>
+        <div class="eyebrow">Certification plan · 4 weeks</div>
+        <h1>AZ-900 — Microsoft Azure Fundamentals</h1>
+        <p class="dek">Study path toward the exam, organized by the three official domains. Progress is saved in this browser — no account or server required.</p>
+      </div>
+      <div class="countdown">
+        <div class="num mono" id="days-left">—</div>
+        <div class="unit">days to the exam</div>
+        <div class="date mono" id="exam-date-label"></div>
+      </div>
+    </div>
+
+    <div class="domains">
+      <div class="domains-label">
+        <span class="eyebrow">Weight by domain (official exam)</span>
+      </div>
+      <div class="bar">
+        <span class="d1" style="width:27.5%"></span>
+        <span class="d2" style="width:37.5%"></span>
+        <span class="d3" style="width:32.5%"></span>
+      </div>
+      <div class="legend">
+        <span><span class="sw d1"></span>Cloud concepts — <b>25–30%</b></span>
+        <span><span class="sw d2"></span>Azure architecture and services — <b>35–40%</b></span>
+        <span><span class="sw d3"></span>Azure management and governance — <b>30–35%</b></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="backup-bar">
+    <div class="backup-actions">
+      <button class="backup-btn" id="backup-export">Export progress</button>
+      <button class="backup-btn" id="backup-import-btn">Import progress</button>
+      <button class="backup-btn theme-btn" id="theme-toggle" aria-label="Toggle dark or light theme">☾ Dark</button>
+      <input type="file" id="backup-import-file" accept="application/json" hidden>
+    </div>
+    <div class="backup-status mono" id="backup-status">—</div>
+  </div>
+
+  <nav class="view-tabs" role="tablist">
+    <button class="tab-btn active" data-view="plan" role="tab" aria-selected="true">Study plan</button>
+    <button class="tab-btn" data-view="glossary" role="tab" aria-selected="false">Glossary</button>
+    <button class="tab-btn" data-view="quiz" role="tab" aria-selected="false">Practice quiz</button>
+    <button class="tab-btn" data-view="flashcards" role="tab" aria-selected="false">Flashcards</button>
+    <button class="tab-btn" data-view="notes" role="tab" aria-selected="false">My notes</button>
+  </nav>
+
+  <section class="view-panel" data-view-panel="plan">
+    <div class="progress-block">
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <div id="progress-text" class="mono"><b id="progress-count">0/0</b> tasks completed</div>
+    </div>
+
+    <main id="weeks"></main>
+  </section>
+
+  <section class="view-panel" data-view-panel="glossary" hidden>
+    <div class="glossary-controls">
+      <input class="glossary-search" id="glossary-search" type="text" placeholder="Search term or keyword…">
+      <div class="chip-row" id="glossary-chips">
+        <button class="chip active" data-domain="all">All</button>
+        <button class="chip" data-domain="d1">Domain 1</button>
+        <button class="chip" data-domain="d2">Domain 2</button>
+        <button class="chip" data-domain="d3">Domain 3</button>
+      </div>
+    </div>
+    <div class="glossary-count mono" id="glossary-count"></div>
+    <div class="glossary-list" id="glossary-list"></div>
+  </section>
+
+  <section class="view-panel" data-view-panel="quiz" hidden>
+    <nav class="subtabs">
+      <button class="subtab-btn active" data-subview="sim">Practice exam · 50</button>
+      <button class="subtab-btn" data-subview="bank">Full bank · 160</button>
+    </nav>
+
+    <div data-subpanel="sim">
+      <div class="quiz-header">
+        <span class="quiz-score mono">Practice exam: <b id="sim-score">0/0</b></span>
+        <span class="sim-timer-group">
+          <span class="sim-timer mono" id="sim-timer">45:00</span>
+          <button class="sim-timer-btn" id="sim-timer-toggle">▶ Start</button>
+        </span>
+        <button class="quiz-reset sim-finish" id="sim-finish">Finish exam</button>
+        <button class="quiz-reset" id="sim-new">New practice exam</button>
+      </div>
+      <div class="sim-results" id="sim-results" hidden></div>
+      <div id="sim-list"></div>
+    </div>
+
+    <div data-subpanel="bank" hidden>
+      <div class="glossary-controls">
+        <div class="chip-row" id="bank-chips">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="d1">Domain 1</button>
+          <button class="chip" data-filter="d2">Domain 2</button>
+          <button class="chip" data-filter="d3">Domain 3</button>
+          <button class="chip" data-filter="weak">Weak</button>
+        </div>
+      </div>
+      <div class="quiz-header">
+        <span class="quiz-score mono"><b id="bank-score">0/160</b> answered · <b id="bank-correct">0</b> correct</span>
+        <button class="quiz-reset" id="bank-reset">Reset bank</button>
+      </div>
+      <div id="bank-list"></div>
+    </div>
+  </section>
+
+  <section class="view-panel" data-view-panel="flashcards" hidden>
+    <div class="fc-progress">
+      <span>Card <b id="fc-index">1</b> of <b id="fc-total">—</b></span>
+      <span><b id="fc-mastered">0</b> mastered</span>
+    </div>
+    <div class="fc-stage">
+      <div class="fc-card" id="fc-card">
+        <div class="fc-inner">
+          <div class="fc-face fc-front">
+            <span class="fc-tag mono" id="fc-tag-front"></span>
+            <div class="fc-text" id="fc-front-text"></div>
+            <span class="fc-hint">Tap to see the answer</span>
+          </div>
+          <div class="fc-face fc-back">
+            <span class="fc-tag mono" id="fc-tag-back"></span>
+            <div class="fc-text" id="fc-back-text"></div>
+            <span class="fc-hint">Tap to flip back</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-controls">
+      <button class="fc-btn" id="fc-prev">← Previous</button>
+      <button class="fc-btn mastered-btn" id="fc-mastered-btn">Mark as mastered</button>
+      <button class="fc-btn primary" id="fc-next">Next →</button>
+      <button class="fc-btn" id="fc-shuffle">Shuffle</button>
+    </div>
+  </section>
+
+  <section class="view-panel" data-view-panel="notes" hidden>
+    <div id="notes-list"></div>
+  </section>
+
+  <section class="resources">
+    <h2>Resources</h2>
+    <div class="res-grid">
+      <div class="res-item">
+        <span class="label">Free official course</span>
+        <a href="https://learn.microsoft.com/en-us/training/courses/az-900t00" target="_blank" rel="noopener">AZ-900T00 on Microsoft Learn</a>
+        <span class="desc">The structured course covering all three domains, in video and text.</span>
+      </div>
+      <div class="res-item">
+        <span class="label">Practice</span>
+        <a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/" target="_blank" rel="noopener">Official certification page</a>
+        <span class="desc">Up-to-date exam objectives and a link to the practice assessment.</span>
+      </div>
+      <div class="res-item">
+        <span class="label">Practice account</span>
+        <a href="https://azure.microsoft.com/en-us/free/" target="_blank" rel="noopener">Azure Free Account</a>
+        <span class="desc">Free credit to try the week 2 and 3 services live.</span>
+      </div>
+      <div class="res-item">
+        <span class="label">Schedule the exam</span>
+        <a href="https://learn.microsoft.com/en-us/certifications/exams/az-900/" target="_blank" rel="noopener">AZ-900 exam page</a>
+        <span class="desc">Book a date, format, and rescheduling policy.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="note">
+    Check the boxes as you go — they're saved locally with <code>localStorage</code>, per device and browser. If you clear the site's cache, progress resets.
+  </footer>
+</div>
+
+<script>
+(function () {
+  const EXAM_DATE = new Date('2026-09-13T09:00:00');
+
+  const weeks = [
+    {
+      n: 1, dates: 'Aug 4–10', title: 'Cloud concepts',
+      goal: 'The fundamentals everything else rests on: what the cloud is, how it’s billed, and the three service models.',
+      domain: 'Domain 1 · 25–30%', hours: '~6 h',
+      tasks: [
+        ['Module: Describe cloud concepts (benefits, high availability, scalability)', '60 min'],
+        ['Module: Describe cloud service types (IaaS, PaaS, SaaS) — with real examples', '45 min'],
+        ['Compare CapEx vs OpEx and the cloud consumption model', '30 min'],
+        ['Create the Azure free account and explore the portal', '45 min'],
+        ['Shared responsibility model: what Microsoft manages vs. what you manage', '40 min'],
+        ['Self-review: write the IaaS/PaaS/SaaS differences from memory', '20 min']
+      ]
+    },
+    {
+      n: 2, dates: 'Aug 11–17', title: 'Architecture and compute/network',
+      goal: 'Half the exam lives here: regions, availability zones, and compute, network, and storage services.',
+      domain: 'Domain 2 · 35–40%', hours: '~8 h',
+      tasks: [
+        ['Module: Describe core Azure architectural components (regions, AZs, resource groups)', '60 min'],
+        ['Module: Describe Azure compute services (VMs, containers, App Service, Functions)', '75 min'],
+        ['Module: Describe Azure networking services (VNets, VPN Gateway, Load Balancer, DNS)', '60 min'],
+        ['Module: Describe Azure storage services (Blob, Files, Disk, redundancy tiers)', '60 min'],
+        ['Lab: create a VM and a virtual network on the free account', '60 min'],
+        ['Self-review: sketch a diagram of a simple architecture using these services', '30 min']
+      ]
+    },
+    {
+      n: 3, dates: 'Aug 18–24', title: 'Solutions, identity, and security',
+      goal: 'Wrap up domain 2 (solutions and tools) and kick off domain 3 with identity, access, and network security.',
+      domain: 'Domain 2→3', hours: '~7 h',
+      tasks: [
+        ['Module: Describe Azure management and governance tools (portal, CLI, PowerShell, ARM templates)', '45 min'],
+        ['Module: additional solutions (AI, IoT, DevOps on Azure) — overview level', '45 min'],
+        ['Module: Describe Azure identity, access, and security (Microsoft Entra ID, MFA, Zero Trust)', '75 min'],
+        ['Module: basic network security (NSGs, firewalls, defense in depth)', '45 min'],
+        ['Lab: set up MFA and review roles on the free account', '45 min'],
+        ['Self-review: short quiz on authentication vs. authorization', '20 min']
+      ]
+    },
+    {
+      n: 4, dates: 'Aug 25 – Sep 4', title: 'Governance, cost, and final exam',
+      goal: 'Wrap up domain 3 (compliance and governance), cost management, and the last week dedicated to practice exams.',
+      domain: 'Domain 3 · 30–35%', hours: '~9 h',
+      tasks: [
+        ['Module: Describe cost management in Azure (pricing calculator, Cost Management, tags)', '50 min'],
+        ['Module: Describe features for governance and compliance (Azure Policy, Blueprints, RBAC)', '60 min'],
+        ['Module: Describe monitoring tools in Azure (Azure Monitor, Service Health, Advisor)', '40 min'],
+        ['Review SLAs, service lifecycle (preview vs. GA), and the Trust Center', '30 min'],
+        ['Full official practice assessment (Microsoft Learn) — first pass', '50 min'],
+        ['Review every topic missed on the practice assessment', '90 min'],
+        ['Second full practice assessment — target: >85%', '50 min'],
+        ['Schedule the exam if a date isn’t booked yet', '10 min']
+      ]
+    }
+  ];
+
+  const container = document.getElementById('weeks');
+  const STORAGE_KEY = 'az900-checklist-v1';
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch (e) { state = {}; }
+
+  let totalTasks = 0;
+
+  weeks.forEach((wk) => {
+    const section = document.createElement('section');
+    section.className = 'week';
+
+    const head = document.createElement('div');
+    head.className = 'week-head';
+    head.innerHTML =
+      '<div>' +
+        '<div class="week-tab"><span class="n">WEEK ' + wk.n + '</span><span class="dates">' + wk.dates + '</span></div>' +
+        '<div class="week-title">' + wk.title + '</div>' +
+        '<p class="week-goal">' + wk.goal + '</p>' +
+      '</div>' +
+      '<div class="week-meta">' +
+        '<div class="hrs">' + wk.hours + '</div>' +
+        '<div class="domweight">' + wk.domain + '</div>' +
+      '</div>';
+    section.appendChild(head);
+
+    const ul = document.createElement('ul');
+    ul.className = 'tasks';
+
+    wk.tasks.forEach((task, idx) => {
+      const [text, est] = task;
+      const id = 'w' + wk.n + '-t' + idx;
+      totalTasks++;
+
+      const li = document.createElement('li');
+      const checked = !!state[id];
+      if (checked) li.classList.add('done');
+
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.id = id;
+      cb.checked = checked;
+      cb.addEventListener('change', () => {
+        state[id] = cb.checked;
+        li.classList.toggle('done', cb.checked);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        updateProgress();
+      });
+
+      const label = document.createElement('label');
+      label.setAttribute('for', id);
+      label.textContent = text;
+
+      const t = document.createElement('span');
+      t.className = 't mono';
+      t.textContent = est;
+
+      li.appendChild(cb);
+      li.appendChild(label);
+      li.appendChild(t);
+      ul.appendChild(li);
+    });
+
+    section.appendChild(ul);
+    container.appendChild(section);
+  });
+
+  function updateProgress() {
+    const done = Object.values(state).filter(Boolean).length;
+    const pct = totalTasks ? Math.round((done / totalTasks) * 100) : 0;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-count').textContent = done + '/' + totalTasks;
+  }
+  updateProgress();
+
+  function updateCountdown() {
+    const now = new Date();
+    const diffMs = EXAM_DATE - now;
+    const days = Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
+    document.getElementById('days-left').textContent = days;
+    document.getElementById('exam-date-label').textContent =
+      EXAM_DATE.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  updateCountdown();
+
+  // ---------- view tabs ----------
+  // ---------- theme toggle ----------
+  const THEME_KEY = 'az900-theme';
+  const themeBtn = document.getElementById('theme-toggle');
+  function currentTheme() {
+    const forced = document.documentElement.getAttribute('data-theme');
+    if (forced === 'dark' || forced === 'light') return forced;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  function renderThemeBtn() {
+    const t = currentTheme();
+    themeBtn.textContent = t === 'dark' ? '☀ Light' : '☾ Dark';
+    themeBtn.title = t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+  }
+  themeBtn.addEventListener('click', () => {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* ignore */ }
+    renderThemeBtn();
+  });
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', renderThemeBtn);
+  }
+  renderThemeBtn();
+
+  const VIEW_KEY = 'az900-active-view';
+  const tabBtns = Array.from(document.querySelectorAll('.tab-btn'));
+  const panels = Array.from(document.querySelectorAll('.view-panel'));
+  function setView(view) {
+    tabBtns.forEach((b) => {
+      const active = b.dataset.view === view;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    panels.forEach((p) => { p.hidden = p.dataset.viewPanel !== view; });
+    localStorage.setItem(VIEW_KEY, view);
+  }
+  tabBtns.forEach((b) => b.addEventListener('click', () => setView(b.dataset.view)));
+  setView(localStorage.getItem(VIEW_KEY) || 'plan');
+
+  // ---------- glossary ----------
+  const glossary = [
+    ['IaaS', 'Infrastructure as a Service: you rent the infrastructure (VMs, networking, storage); you manage the OS and the apps.', 'd1'],
+    ['PaaS', 'Platform as a Service: the provider manages the platform (OS, runtime); you only handle the code and the data.', 'd1'],
+    ['SaaS', 'Software as a Service: a complete, ready-to-use application (e.g. Microsoft 365); the provider manages everything.', 'd1'],
+    ['CapEx', 'Capital expenditure: a large upfront investment in your own infrastructure (buying servers).', 'd1'],
+    ['OpEx', 'Operational expenditure: pay-as-you-go, no upfront investment — the public cloud model.', 'd1'],
+    ['High availability', 'A system’s ability to keep running through failures of individual components.', 'd1'],
+    ['Vertical scaling', 'Adding more resources (CPU/RAM) to an existing instance (scale up).', 'd1'],
+    ['Horizontal scaling', 'Adding more instances in parallel to spread the load (scale out).', 'd1'],
+    ['Elasticity', 'Automatic adjustment of resources to match demand, both up and down.', 'd1'],
+    ['Agility', 'The speed to provision and release resources without waiting on physical hardware.', 'd1'],
+    ['Fault tolerance', 'A system keeps operating even if a component fails, with no interruption for the user.', 'd1'],
+    ['Disaster recovery (DR)', 'A plan and mechanisms to restore service after a major outage.', 'd1'],
+    ['Shared responsibility model', 'Splits what Microsoft secures (the cloud) from what the customer secures (what runs in the cloud); the line shifts depending on IaaS/PaaS/SaaS.', 'd1'],
+    ['Economies of scale', 'Lower per-unit costs because Microsoft buys and operates infrastructure at massive volume.', 'd1'],
+    ['Composite SLA', 'The combined uptime guarantee of a solution using multiple services, calculated by multiplying each service’s SLA together, not averaging them.', 'd1'],
+    ['Measured service', 'Cloud usage is metered automatically, so billing is transparent and based on actual consumption.', 'd1'],
+    ['Region', 'A set of datacenters in a geographic location, connected by a low-latency network.', 'd2'],
+    ['Availability zone (AZ)', 'A physically separate location within a region, with independent power, cooling, and networking.', 'd2'],
+    ['Region pair', 'Two regions within the same geography, used for replication and disaster recovery.', 'd2'],
+    ['Resource group', 'A logical container that groups related Azure resources so they can be managed together.', 'd2'],
+    ['Azure Resource Manager (ARM)', 'The management layer that processes every request to create or modify resources.', 'd2'],
+    ['Virtual machine (VM)', 'IaaS compute: a virtualized server where you control the full operating system.', 'd2'],
+    ['App Service', 'PaaS for hosting web applications without managing servers.', 'd2'],
+    ['Azure Functions', 'Serverless compute: code that runs in response to events, with no infrastructure to provision.', 'd2'],
+    ['Azure Kubernetes Service (AKS)', 'Managed container orchestration.', 'd2'],
+    ['Blob Storage', 'Storage for unstructured objects: files, images, backups.', 'd2'],
+    ['VNet', 'A private virtual network within Azure used to isolate and connect resources.', 'd2'],
+    ['ExpressRoute', 'A dedicated private connection between an on-premises network and Azure, bypassing the public Internet.', 'd2'],
+    ['Azure SQL Database', 'A fully managed PaaS relational database.', 'd2'],
+    ['Cosmos DB', 'A globally distributed, multi-model NoSQL database.', 'd2'],
+    ['CIDR notation', 'A way to express an IP address range and its size, e.g. 10.0.0.0/16; a smaller number after the slash means more addresses.', 'd2'],
+    ['VNet peering', 'Connects two virtual networks privately over Azure’s backbone; non-transitive by default, so peering A-B and B-C does not connect A to C.', 'd2'],
+    ['Network Security Group (NSG)', 'A set of allow/deny rules, evaluated by priority (lowest number first), that filters traffic to a subnet or network interface.', 'd2'],
+    ['Application Security Group (ASG)', 'Groups VMs by application role (e.g. web servers) so NSG rules can target the group instead of individual IP addresses.', 'd2'],
+    ['Azure Bastion', 'Lets you RDP/SSH into a VM through the Azure portal without giving the VM a public IP or opening inbound ports.', 'd2'],
+    ['VPN Gateway', 'Creates an encrypted tunnel over the public Internet between on-premises and a VNet; requires a subnet named exactly "GatewaySubnet".', 'd2'],
+    ['Private endpoint', 'Gives an Azure service a private IP address inside your VNet via Azure Private Link, so traffic never touches the public Internet.', 'd2'],
+    ['Service endpoint', 'Extends your VNet’s identity to an Azure service over the Microsoft backbone; the service keeps its public IP but only accepts traffic from the allowed VNet/subnet.', 'd2'],
+    ['Shared Access Signature (SAS)', 'A time-limited, permission-scoped token granting access to storage without sharing the account keys; a User Delegation SAS (backed by Microsoft Entra ID) is the most secure form.', 'd2'],
+    ['Azure Key Vault', 'Securely stores secrets, certificates, and encryption keys, including customer-managed keys used for storage encryption.', 'd2'],
+    ['AzCopy', 'A command-line tool for fast, scriptable, resumable bulk transfers into and out of Azure Storage.', 'd2'],
+    ['Azure Migrate', 'A hub that assesses on-premises servers, databases, and web apps, then migrates them into Azure with dependency mapping and cost estimates.', 'd2'],
+    ['Virtual Machine Scale Set (VMSS)', 'Deploys and automatically scales a group of identical, load-balanced VMs based on demand.', 'd2'],
+    ['Availability set', 'Groups VMs across fault domains and update domains for manual redundancy (99.95% SLA); unlike VMSS, it does not scale automatically.', 'd2'],
+    ['Microsoft Entra ID', 'Azure’s identity and access service (formerly Azure AD); authenticates users and secures resources.', 'd3'],
+    ['RBAC', 'Role-based access control: what a user can do on a specific resource.', 'd3'],
+    ['MFA', 'Multi-factor authentication: a second verification factor beyond the password.', 'd3'],
+    ['Zero Trust', 'A security model that explicitly verifies every request, without trusting the internal network by default.', 'd3'],
+    ['Azure Policy', 'Enforces rules on how resources must be configured (e.g. "only this region is allowed").', 'd3'],
+    ['Azure Blueprints', 'Packages templates, policies, and roles to repeatably deploy an environment that meets a standard.', 'd3'],
+    ['Management group', 'A hierarchy level above subscriptions used to apply governance at scale.', 'd3'],
+    ['Tags', 'Key-value pairs on a resource, used for organization, cost tracking, and automation.', 'd3'],
+    ['SLA', 'Service level agreement: a contractual availability commitment (e.g. 99.9%).', 'd3'],
+    ['Azure Advisor', 'Personalized recommendations for cost, security, performance, and reliability.', 'd3'],
+    ['Azure Monitor', 'Collects and analyzes metrics and logs from Azure resources.', 'd3'],
+    ['Azure Cost Management', 'A tool to analyze, budget, and control Azure spending.', 'd3'],
+    ['Resource lock', 'A CanNotDelete or ReadOnly restriction on a resource that overrides RBAC permissions and is inherited from parent to child resources — unlike tags, which are not inherited.', 'd3'],
+    ['Azure Support Plans', 'Tiers of Microsoft technical support (Basic, Developer, Standard, Professional Direct, Premier) with different response times; Basic is free but cannot open technical support tickets.', 'd3'],
+    ['Defense in Depth', 'A layered security strategy — Physical, Identity, Perimeter, Network, Compute, Application, Data — so that if one layer fails, another still protects the environment.', 'd3'],
+    ['Microsoft Defender for Cloud', 'Azure’s unified security posture and workload protection tool; the free tier covers posture management (Secure Score), paid plans add active threat protection per workload.', 'd3'],
+    ['Secure Score', 'A 0-100% rating in Microsoft Defender for Cloud showing how closely an environment follows security best practices.', 'd3'],
+    ['Infrastructure as Code (IaC)', 'Defining infrastructure in code (ARM templates, Bicep, or Terraform) instead of manual clicks, enabling repeatable, version-controlled deployments.', 'd3'],
+    ['Bicep', 'A simplified, more readable language that compiles down to ARM template JSON; both are declarative and idempotent.', 'd3'],
+    ['Log Analytics (KQL)', 'The Azure Monitor component where logs are stored and queried using Kusto Query Language (KQL) for deep troubleshooting.', 'd3']
+  ];
+  const domLabel = { d1: 'DOM 1', d2: 'DOM 2', d3: 'DOM 3' };
+  const glossaryList = document.getElementById('glossary-list');
+  const glossaryCount = document.getElementById('glossary-count');
+  const glossarySearch = document.getElementById('glossary-search');
+  let activeDomain = 'all';
+
+  function renderGlossary() {
+    const q = glossarySearch.value.trim().toLowerCase();
+    const filtered = glossary.filter(([term, def, dom]) => {
+      if (activeDomain !== 'all' && dom !== activeDomain) return false;
+      if (!q) return true;
+      return term.toLowerCase().includes(q) || def.toLowerCase().includes(q);
+    });
+    glossaryList.innerHTML = '';
+    filtered.forEach(([term, def, dom]) => {
+      const item = document.createElement('div');
+      item.className = 'g-item';
+      item.innerHTML =
+        '<span class="g-term">' + term + '</span>' +
+        '<span class="g-def">' + def + '</span>' +
+        '<span class="g-dom mono">' + domLabel[dom] + '</span>';
+      glossaryList.appendChild(item);
+    });
+    glossaryCount.textContent = filtered.length + ' of ' + glossary.length + ' terms';
+  }
+  glossarySearch.addEventListener('input', renderGlossary);
+  document.getElementById('glossary-chips').addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip');
+    if (!chip) return;
+    document.querySelectorAll('#glossary-chips .chip').forEach((c) => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeDomain = chip.dataset.domain;
+    renderGlossary();
+  });
+  renderGlossary();
+
+  // ---------- quiz: 120-question bank ----------
+  const quizBank = [
+    { id: 97, dom: 'd2', obj: '2.2', q: 'VNet A is peered with VNet B, and VNet B is peered with VNet C. Without any additional configuration, can resources in VNet A communicate with resources in VNet C?', opts: ['No — VNet peering is non-transitive; A and C would need their own direct peering', 'Yes — peering is transitive, so A reaches C through B automatically', 'Only if all three VNets are in the same region and the same subscription', 'Only if the peering between A and B has gateway transit enabled'], correct: 0, explain: 'VNet peering is non-transitive: your friend knowing someone doesn’t mean you automatically know them too. A and C need a direct peering connection to talk to each other.' },
+    { id: 85, dom: 'd3', obj: '3.4', q: 'Which of these tools is focused on notifying about outages or planned maintenance on the Azure platform itself that affect the customer’s resources, as opposed to monitoring the performance of the customer’s own app?', opts: ['Azure Policy compliance alerts', 'Azure Advisor reliability alerts', 'Azure Monitor metric alerts', 'Azure Service Health'], correct: 3, explain: 'Service Health reports on incidents, maintenance, and advisories from the Azure platform itself that affect your resources; Azure Monitor collects metrics/logs on the performance of your own apps and resources.' },
+    { id: 62, dom: 'd1', obj: '1.2', q: 'An e-commerce site automatically adds more instances during Black Friday and removes them when traffic drops, with no manual intervention. Which cloud characteristic describes this?', opts: ['Elasticity', 'High availability', 'Disaster recovery', 'Manual vertical scaling'], correct: 0, explain: 'Elasticity is the ability to scale automatically based on real demand, without manual action — distinct from vertical scaling (adding resources to a single machine).' },
+    { id: 60, dom: 'd2', obj: '2.4', q: 'Which service lets you define more granular access conditions (for example, requiring MFA only from untrusted locations)?', opts: ['Conditional Access in Microsoft Entra ID', 'Azure Policy with an identity initiative', 'Azure role-based access control (RBAC)', 'Microsoft Defender for Cloud security policies'], correct: 0, explain: 'Conditional Access evaluates signals (location, device, risk) to decide whether to require extra controls like MFA.' },
+    { id: 83, dom: 'd3', obj: '3.2', q: 'An administrator with Contributor permissions on a resource group tries to delete a critical VM, but the operation is rejected even though their role does allow deleting resources. What’s the most likely cause?', opts: ['An Azure Policy with the deny effect assigned to the resource group', 'Conditional Access requiring MFA before any delete operation', 'The Contributor role does not include delete permissions on compute', 'A CanNotDelete resource lock applied to that resource or resource group'], correct: 3, explain: 'Resource locks (CanNotDelete / ReadOnly) act above RBAC: even a Contributor with delete permission can be blocked by a lock explicitly placed on the resource.' },
+    { id: 17, dom: 'd1', obj: '1.2', q: 'What’s the main difference between disaster recovery (DR) and high availability (HA)?', opts: ['HA covers planned maintenance windows; DR covers unplanned incidents of any size', 'DR applies to data only; HA applies to compute and networking components', 'HA is achieved with backups; DR is achieved with redundant instances', 'HA keeps the service up through minor failures; DR restores the service after a major outage'], correct: 3, explain: 'HA covers everyday failures by keeping the service active; DR is the plan for catastrophic scenarios where the service must be restored.' },
+    { id: 52, dom: 'd2', obj: '2.4', q: 'What’s the difference between authentication and authorization?', opts: ['Authentication verifies who you are; authorization determines what you can do', 'They’re exact synonyms', 'Authorization verifies who you are; authentication determines what you can do', 'Neither applies to the cloud'], correct: 0, explain: 'Authentication = proving identity (login). Authorization = what permissions that already-authenticated identity has (RBAC).' },
+    { id: 137, dom: 'd3', obj: '3.4', q: 'A team wants to be notified by SMS and also trigger an automation runbook automatically whenever a VM’s CPU stays above 90% for five minutes. Which two Azure Monitor components make this possible?', opts: ['An alert rule (the condition) and an action group (who to notify and what to run)', 'A Cost Management budget and a budget alert with an automation webhook', 'Azure Advisor performance recommendations and a Service Health alert', 'A Log Analytics workspace query and a Resource Health notification'], correct: 0, explain: 'In Azure Monitor, an alert rule defines the signal and condition to watch; when it fires, the linked action group performs the actions — notifications (email, SMS, push, voice) and automated responses (runbooks, functions, webhooks).' },
+    { id: 146, dom: 'd2', obj: '2.1', q: 'One VM must survive the failure of an entire datacenter in its region, while a second VM only needs protection against a single rack or host failure. Which combination is appropriate?', opts: ['Availability zones for the first VM; an availability set for the second VM', 'Region pairs for the first VM; availability zones for the second VM', 'An availability set for the first VM; a scale set for the second VM', 'Availability zones for the first VM; a region pair for the second VM'], correct: 0, explain: 'Availability zones are separate datacenters within a region. Availability sets spread VMs across fault domains (racks) and update domains inside one datacenter. Region pairs are about cross-region DR, not a single VM.' },
+    { id: 6, dom: 'd1', obj: '1.2', q: 'A startup needs to launch a product quickly without knowing how much demand it will get. Which cloud benefit matters most here?', opts: ['Predictable capital expenditure', 'Hardware ownership', 'Agility', 'Long-term contracts'], correct: 2, explain: 'Agility allows resources to be provisioned and adjusted quickly, without waiting on hardware purchases.' },
+    { id: 156, dom: 'd3', obj: '3.2', q: 'A policy with the deny effect is assigned to a subscription after several non-compliant resources already exist. What happens to those existing resources?', opts: ['They are deleted automatically at the next compliance evaluation', 'They remain, are reported as non-compliant, and cannot be updated in a way that stays non-compliant', 'They are automatically modified so that they become compliant with the policy', 'They are exempt permanently, because deny only applies to resources created after the assignment'], correct: 1, explain: 'Deny blocks non-compliant create/update requests going forward. Existing resources are not deleted or changed — they are flagged as non-compliant in the compliance view until remediated.' },
+    { id: 42, dom: 'd2', obj: '2.4', q: 'Which Azure mechanism specifically controls what a user can do on a resource (for example, "can restart VMs but not delete them")?', opts: ['Azure Policy', 'RBAC', 'Azure Blueprints', 'Microsoft Entra ID alone'], correct: 1, explain: 'RBAC (role-based access control) assigns action permissions on specific resources; Entra ID handles identity, not permissions.' },
+    { id: 159, dom: 'd3', obj: '3.4', q: 'An application reports slow responses, but the VM’s CPU and memory metrics look normal. Which tool would most directly show which request or dependency is slow?', opts: ['Azure Service Health, which lists degraded dependencies per region', 'Application Insights, which traces requests and dependency calls inside the app', 'Azure Advisor, which recommends performance fixes for the VM size', 'Resource Health, which reports the availability state of the VM'], correct: 1, explain: 'Application Insights instruments the application itself: request durations, dependency calls (SQL, HTTP), exceptions. VM-level metrics and platform health tools cannot see inside the app.' },
+    { id: 28, dom: 'd2', obj: '2.2', q: 'Which service acts as a web application firewall (WAF) and layer-7 (HTTP/HTTPS) load balancer in Azure?', opts: ['Azure Front Door (global)', 'Azure Application Gateway', 'Azure Firewall Premium', 'Azure Load Balancer'], correct: 1, explain: 'Application Gateway operates at layer 7, understands HTTP/HTTPS, and can include a built-in WAF; Azure Firewall operates at lower layers.' },
+    { id: 15, dom: 'd1', obj: '1.1', q: 'What does "pay-as-you-go" mean in Azure’s pricing model?', opts: ['You pay only for the resources consumed, during the period they are consumed', 'You pay a fixed monthly fee per subscription regardless of the resources used', 'You pay a fixed annual amount agreed in advance, adjusted at the end of the year', 'You pay a perpetual license upfront and then only for support and updates'], correct: 0, explain: 'Pay-as-you-go charges for actual consumption, aligned with the public cloud’s OpEx model.' },
+    { id: 49, dom: 'd2', obj: '2.4', q: 'Which strategy applies multiple layers of controls (network, identity, host, data) instead of relying on a single defense?', opts: ['Multi-factor authentication', 'Defense in depth', 'Role-based access control', 'Zero Trust'], correct: 1, explain: 'Defense in depth stacks several layers of security, so that if one fails, the others keep protecting the system.' },
+    { id: 88, dom: 'd3', obj: '3.2', q: 'A legal team needs formal evidence that Azure complies with a specific certification (for example ISO 27001) for an audit process. Where should they look for that official documentation?', opts: ['In the Trust Center / Service Trust Portal, where audit reports and certifications are published', 'In Microsoft Defender for Cloud, under the regulatory compliance dashboard for the subscription', 'By opening a support request, since compliance evidence is only released case by case', 'In the Azure portal under Azure Policy, in the compliance section of the built-in initiative'], correct: 0, explain: 'The Trust Center and the Service Trust Portal centralize Microsoft’s public documentation on certifications, audit reports, and regulatory compliance — the right resource for legal audit processes.' },
+    { id: 5, dom: 'd1', obj: '1.2', q: 'Which of the following is a key advantage of the cloud over on-premises infrastructure?', opts: ['Less dependence on internet connectivity', 'Lower latency than a local datacenter', 'Simplified high availability and disaster recovery', 'Full physical control over the hardware'], correct: 2, explain: 'The cloud offers geographic redundancy and built-in HA/DR mechanisms, without the customer having to build that infrastructure themselves.' },
+    { id: 105, dom: 'd2', obj: '2.4', q: 'By default, does a Network Security Group block traffic between two VMs in the same VNet?', opts: ['Only if the two VMs are placed in different subnets of that same VNet', 'Only for management traffic such as RDP and SSH between the VMs', 'No — by default VNet traffic and outbound internet are allowed; only inbound internet traffic is denied', 'Yes — the default rules deny all traffic, including between VMs in the same VNet'], correct: 2, explain: 'A common misconception is that NSGs deny everything by default. In reality, built-in default rules allow VNet-to-VNet communication and outbound internet access — only inbound traffic from the internet is denied by default.' },
+    { id: 84, dom: 'd3', obj: '3.1', q: 'A finance team wants to receive an automatic email alert when a subscription’s monthly spending exceeds 80% of what was budgeted. Which Azure tool should they configure?', opts: ['A budget in Azure Cost Management', 'An Azure Advisor cost alert', 'An Azure Service Health alert', 'An Azure Monitor metric alert'], correct: 0, explain: 'Budgets in Cost Management let you define spending thresholds and trigger automatic alerts when they’re reached; Advisor gives optimization recommendations but no budget alerts, and Pricing Calculator only estimates costs before deployment.' },
+    { id: 110, dom: 'd2', obj: '2.3', q: 'A company needs to move 200 terabytes of archival data to Azure but has very limited internet bandwidth, making an online transfer impractical. Which Azure service is designed for exactly this scenario?', opts: ['Azure Front Door', 'Azure Migrate', 'Azure Traffic Manager', 'Azure Data Box'], correct: 3, explain: 'Azure Data Box is a physical appliance Microsoft ships to your location — you load your data locally, ship it back, and Microsoft uploads it, avoiding the bandwidth bottleneck entirely. Azure Migrate is for assessing and migrating VMs/databases/web apps online, not bulk offline data transfer.' },
+    { id: 7, dom: 'd1', obj: '1.1', q: 'Which cloud deployment model uses exclusively shared resources, publicly accessible over the Internet, managed by an external provider?', opts: ['Private cloud', 'Community cloud', 'Public cloud', 'Hybrid cloud'], correct: 2, explain: 'The public cloud is owned by an external provider (like Microsoft) and shares infrastructure among multiple customers.' },
+    { id: 129, dom: 'd3', obj: '3.2', q: 'An Azure Policy is assigned at the management group level. Six months later a new subscription is created under that management group. What happens to the policy for resources in the new subscription?', opts: ['It applies automatically — assignments are inherited by every child scope, including ones created later', 'It must be assigned again on the new subscription, because assignments are copied at creation time', 'It applies only if the new subscription is moved into the same resource group as the policy', 'It applies only to resources that existed when the assignment was made, not to new ones'], correct: 0, explain: 'Policy assignments flow down the hierarchy (management group → subscription → resource group → resource), so new child scopes automatically inherit them.' },
+    { id: 36, dom: 'd2', obj: '2.1', q: 'What best describes Azure Cosmos DB’s consistency model?', opts: ['It only offers eventual consistency, with no options', 'It’s an exclusively relational database', 'It offers multiple configurable consistency levels', 'It doesn’t support multiple regions'], correct: 2, explain: 'Cosmos DB offers five configurable consistency levels, balancing performance and consistency based on the use case.' },
+    { id: 134, dom: 'd3', obj: '3.3', q: 'A resource is created from the Azure portal, another from Azure CLI, and a third from an SDK in application code. Which single management layer receives and authenticates all three requests before the resources are created?', opts: ['Azure Monitor', 'Azure Resource Manager (ARM)', 'Azure Active Directory Domain Services', 'Azure Service Health'], correct: 1, explain: 'Azure Resource Manager is the deployment and management service for Azure: every tool (portal, CLI, PowerShell, SDKs, templates) talks to the ARM API, which authenticates and authorizes the request and then forwards it to the right resource provider.' },
+    { id: 109, dom: 'd2', obj: '2.3', q: 'A developer needs to grant a third-party app temporary, time-limited access to upload files to one specific container, without exposing the storage account’s full access keys. What should they use?', opts: ['A Shared Access Signature (SAS) scoped to that container with an expiry', 'A storage account access key shared with the app and rotated monthly', 'A Storage Blob Data Contributor role assignment on the storage account', 'A private endpoint on the storage account restricted to the app’s VNet'], correct: 0, explain: 'SAS tokens grant scoped, time-bound permissions without exposing the account’s master keys — a User Delegation SAS, backed by Microsoft Entra ID, is the most secure form.' },
+    { id: 1, dom: 'd1', obj: '1.1', q: 'A company wants to avoid buying its own servers and prefers to pay only for what it uses each month. Which cost model describes this?', opts: ['CapEx', 'Perpetual licensing', 'Fixed TCO', 'OpEx'], correct: 3, explain: 'OpEx is operational expenditure, pay-as-you-go — the typical public cloud model, with no upfront hardware investment.' },
+    { id: 99, dom: 'd2', obj: '2.2', q: 'Which DNS record type is used to define the mail servers responsible for accepting email for a domain?', opts: ['TXT record', 'CNAME record', 'A record', 'MX record'], correct: 3, explain: 'MX (Mail Exchange) records point to the mail servers for a domain; A records map to IPv4 addresses, CNAME creates an alias, and TXT stores arbitrary text often used for domain verification.' },
+    { id: 82, dom: 'd3', obj: '3.2', q: 'An organization wants to let a group of developers create virtual machines, but ONLY within a specific region and with an allowed VM size. Which combination of governance tools achieves this?', opts: ['Azure Policy to grant VM creation rights, and RBAC to restrict region and size', 'RBAC alone — a custom role can restrict both the action and the allowed regions', 'Azure Policy alone — it can grant the create action and restrict the SKU', 'RBAC to grant permission to create VMs, and Azure Policy to restrict region and size'], correct: 3, explain: 'RBAC controls WHO can perform WHAT action (e.g. create VMs); Azure Policy controls the rules for HOW resources must be configured (region, allowed SKU, etc.) — combining them gives granular control.' },
+    { id: 100, dom: 'd2', obj: '2.2', q: 'A team creates an Azure Private DNS zone but VMs in their VNet still can’t resolve the internal names in it. What is the most likely missing step?', opts: ['DNS records must be added through Azure CLI, never through the Portal', 'The zone must be explicitly linked to the VNet — creating the zone alone isn’t enough', 'Private DNS zones only work with Azure Bastion', 'Private DNS zones require a public IP to function'], correct: 1, explain: 'A Private DNS zone has to be explicitly linked to each VNet that should use it for resolution — the zone existing by itself does nothing until it’s linked.' },
+    { id: 93, dom: 'd1', obj: '1.2', q: 'A company deploys its VMs across three Availability Zones in a supported region instead of using a single zone. What SLA should they expect as a result?', opts: ['99.9%', '100%, guaranteed with no downtime', '99.95%', '99.99%'], correct: 3, explain: 'Spreading VMs across Availability Zones is how Azure reaches its highest VM uptime guarantee, 99.99% — no Azure service offers a 100% SLA.' },
+    { id: 43, dom: 'd3', obj: '3.2', q: 'Which tool is used to force all new resources to be created only in an allowed region, rejecting any that don’t comply?', opts: ['Azure Monitor', 'Azure Advisor', 'Azure Policy', 'Azure Cost Management'], correct: 2, explain: 'Azure Policy evaluates and can block (deny) resources that don’t meet defined rules, such as region restrictions.' },
+    { id: 34, dom: 'd2', obj: '2.4', q: 'Which service lets you connect securely to a VM without exposing a public RDP/SSH port to the Internet?', opts: ['Azure Bastion', 'Azure Traffic Manager', 'Azure Firewall', 'Azure Front Door'], correct: 0, explain: 'Azure Bastion provides RDP/SSH access through the portal, with no need for a public IP or exposed ports on the VM.' },
+    { id: 111, dom: 'd3', obj: '3.2', q: 'A Delete lock and a "Department = Finance" tag are both applied at the resource group level. Which statement is correct about how they affect the resources inside that group?', opts: ['Neither the lock nor the tag applies to resources inside the group', 'The lock is inherited by every resource inside the group, but the tag is NOT automatically applied to them', 'The tag is inherited by every resource inside the group, but the lock is NOT', 'Both the lock and the tag apply automatically to every resource inside the group'], correct: 1, explain: 'This is a classic exam trap: resource locks ARE inherited from parent to child resources, but tags are NOT — tagging a resource group does not automatically tag the resources inside it.' },
+    { id: 66, dom: 'd1', obj: '1.1', q: 'Which characteristic best defines a "serverless" compute model like Azure Functions?', opts: ['The customer commits to a number of executions per month in exchange for a lower price', 'The provider reserves dedicated hosts and the customer pays a fixed monthly amount', 'The provider manages the infrastructure and the customer pays per execution, not for servers', 'The customer manages the operating system and the provider manages only the hardware'], correct: 2, explain: 'Serverless doesn’t mean "no servers" — the provider abstracts and manages the infrastructure; the customer pays per execution/consumption, not for keeping servers running.' },
+    { id: 77, dom: 'd2', obj: '2.2', q: 'A company needs private, dedicated connectivity between its on-premises datacenter and Azure, without going over the public Internet, with high and consistent bandwidth for critical workloads. Which service is most appropriate?', opts: ['Azure ExpressRoute', 'Azure Front Door', 'VNet Peering', 'A simple Network Security Group'], correct: 0, explain: 'ExpressRoute provides a dedicated private connection (not over the public Internet) between on-premises and Azure, with higher bandwidth and more consistent latency than a traditional VPN Gateway over the Internet.' },
+    { id: 86, dom: 'd3', obj: '3.3', q: 'A company wants to centrally manage, with the same Azure governance tools (Policy, RBAC, Monitor), servers running physically in its own datacenter and at another cloud provider. Which Azure service extends Azure management to resources outside Azure?', opts: ['Azure Arc', 'Azure Blueprints', 'Azure Site Recovery', 'Azure Migrate'], correct: 0, explain: 'Azure Arc extends Azure management and governance (Policy, RBAC, Monitor) to servers, Kubernetes, and other resources that live outside Azure — on-premises or in other clouds.' },
+    { id: 148, dom: 'd2', obj: '2.2', q: 'A global web app must route users to the nearest healthy region and also inspect HTTP requests with a web application firewall at the edge. Which service covers both needs in one product?', opts: ['Azure Traffic Manager with a performance routing profile', 'Azure Front Door with a WAF policy enabled', 'Azure Load Balancer in each region with health probes', 'Azure Application Gateway deployed in the primary region'], correct: 1, explain: 'Front Door is a global layer-7 entry point: it routes to the closest healthy backend and supports WAF. Traffic Manager is DNS-only (no WAF); Load Balancer is layer 4 and regional; Application Gateway is regional.' },
+    { id: 144, dom: 'd1', obj: '1.3', q: 'One team deploys a web app to Azure App Service; a second team runs the same app on Azure VMs they built themselves. Which responsibility differs between the two teams?', opts: ['Only the App Service team is responsible for the application code and its configuration', 'Only the VM team is responsible for patching and hardening the operating system', 'Only the VM team is responsible for the security of the data stored by the app', 'Only the App Service team is responsible for the identities that sign in to the app'], correct: 1, explain: 'App Service is PaaS: Microsoft manages the OS and runtime. VMs are IaaS: the customer patches and hardens the OS. Code, data and identities remain the customer’s responsibility in both models.' },
+    { id: 38, dom: 'd2', obj: '2.2', q: 'Which managed service runs containerized code with scaling and load balancing, without using Kubernetes directly?', opts: ['Azure Container Apps', 'Azure Bastion', 'Azure Front Door', 'Azure Data Factory'], correct: 0, explain: 'Azure Container Apps runs containerized microservices with automatic scaling, without exposing the complexity of managing Kubernetes.' },
+    { id: 32, dom: 'd3', obj: '3.3', q: 'Which cross-platform command-line tool lets you manage Azure resources from a script?', opts: ['Native Azure SSH', 'Azure CLI', 'Only the Azure Portal', 'Windows PowerShell only'], correct: 1, explain: 'Azure CLI is the cross-platform (Windows, Linux, macOS) command-line tool for managing Azure via script.' },
+    { id: 78, dom: 'd2', obj: '2.2', q: 'A company needs to distribute HTTP traffic across VMs based on the URL content (for example /images vs /api) within the same region. Which Azure service is specifically designed for that?', opts: ['Azure ExpressRoute with path-based routing rules', 'Azure Traffic Manager with a path-based routing profile', 'Azure Load Balancer with URL-aware health probes', 'Azure Application Gateway with URL path-based routing'], correct: 3, explain: 'Application Gateway operates at layer 7 (HTTP) and supports routing based on URL content, something Load Balancer (layer 4, TCP/UDP) cannot do.' },
+    { id: 45, dom: 'd1', obj: '1.2', q: 'What best describes an Azure SLA (Service Level Agreement)?', opts: ['A contractual commitment to service availability', 'A support plan with guaranteed response times', 'A published security and compliance baseline', 'A pricing agreement for reserved capacity'], correct: 0, explain: 'The SLA is a measurable, contractual commitment (e.g. 99.9% monthly availability), with service credits if it isn’t met.' },
+    { id: 55, dom: 'd3', obj: '3.1', q: 'Which tool lets you estimate the monthly cost of an Azure architecture in advance, before deploying it?', opts: ['Azure Pricing Calculator', 'Azure Advisor cost recommendations', 'Azure Cost Management cost analysis', 'Azure Monitor usage and estimated costs'], correct: 0, explain: 'The Azure Pricing Calculator estimates costs based on the chosen services and configuration, before anything is created.' },
+    { id: 41, dom: 'd2', obj: '2.1', q: 'What is Azure Marketplace?', opts: ['A private repository for the organization’s own templates and images', 'The tenant-wide catalog of Entra ID applications available for single sign-on', 'The portal section where usage and spending across subscriptions is reviewed', 'A catalog of preconfigured solutions and images from Microsoft and partners, ready to deploy'], correct: 3, explain: 'Azure Marketplace offers preconfigured solutions and VM images (from Microsoft and partners) ready to deploy directly.' },
+    { id: 124, dom: 'd3', obj: '3.1', q: 'A company already owns Windows Server and SQL Server licenses covered by Software Assurance. Which option lets it reuse those licenses to lower the price of the corresponding Azure VMs?', opts: ['Azure Spot Virtual Machines', 'Azure Reserved Instances', 'Azure Dev/Test pricing', 'Azure Hybrid Benefit'], correct: 3, explain: 'Azure Hybrid Benefit lets you apply existing on-premises Windows Server and SQL Server licenses (with Software Assurance) to Azure VMs, removing the license portion of the price.' },
+    { id: 79, dom: 'd2', obj: '2.4', q: 'What’s a key difference between Microsoft Entra ID (formerly Azure AD) and traditional Active Directory Domain Services (AD DS)?', opts: ['They are the same directory service, offered as cloud-hosted and self-hosted editions', 'AD DS is the cloud-native option; Entra ID is the on-premises option for domain-joined devices', 'Entra ID handles device management only; AD DS handles user sign-in and SSO', 'Entra ID is an HTTP/REST-based cloud identity service; AD DS uses LDAP and Kerberos designed for on-premises networks'], correct: 3, explain: 'Entra ID is a cloud-native identity and access management service (HTTP/REST, SAML, OAuth); AD DS is the traditional on-premises directory based on LDAP/Kerberos/NTLM.' },
+    { id: 145, dom: 'd1', obj: '1.1', q: 'Which statement correctly distinguishes capital expenditure (CapEx) from operational expenditure (OpEx) when moving to the cloud?', opts: ['CapEx is the ongoing pay-as-you-go spend; OpEx is the upfront purchase of datacenter hardware', 'CapEx and OpEx both disappear in the cloud, since the provider owns all of the costs', 'Moving to the cloud shifts spending from upfront purchases (CapEx) to ongoing consumption (OpEx)', 'Moving to the cloud increases CapEx, because reserved capacity must be purchased upfront'], correct: 2, explain: 'CapEx = buying assets upfront (servers, datacenter). OpEx = paying for what you use as you go. The cloud replaces most CapEx with OpEx; reservations are still billed as consumption, not as owned assets.' },
+    { id: 120, dom: 'd3', obj: '3.4', q: 'A single VM appears to be down. Which tool would tell you specifically whether that VM’s outage was caused by an Azure platform issue versus something the user did (like shutting it down)?', opts: ['Azure Advisor', 'Resource Health for that specific resource', 'Azure Status Page (status.azure.com)', 'Azure Service Health'], correct: 1, explain: 'Resource Health gives the detailed health status of one individual resource and distinguishes platform-caused issues from user-initiated actions or configuration errors — Service Health is broader (your subscriptions/regions) and the Status Page is global and not tied to your account at all.' },
+    { id: 107, dom: 'd2', obj: '2.4', q: 'A company needs centralized, stateful traffic filtering with Layer 7 (application-level) inspection across multiple VNets and subscriptions, not just simple IP/port rules on individual resources. What should they use instead of relying only on NSGs?', opts: ['Azure Blueprints', 'Resource locks', 'Azure Advisor', 'Azure Firewall'], correct: 3, explain: 'NSGs operate at Layer 3/4 as a distributed, per-resource firewall. Azure Firewall is a centralized, stateful firewall with Layer 7 inspection built for organization-wide traffic control.' },
+    { id: 94, dom: 'd1', obj: '1.2', q: 'Which VM deployment configuration gives the LOWEST SLA guarantee?', opts: ['All three configurations offer the same SLA', 'VMs in an Availability Set', 'VMs spread across Availability Zones', 'A single VM using only Premium SSD or Ultra Disk'], correct: 3, explain: 'Single VM with Premium SSD/Ultra Disk = 99.9%, Availability Set = 99.95%, Availability Zones = 99.99% — the single-VM configuration is the lowest of the three.' },
+    { id: 37, dom: 'd2', obj: '2.2', q: 'What kind of scaling does Azure App Service perform when it increases the NUMBER of instances instead of their size?', opts: ['Scale up', 'Scale down', 'Migration', 'Scale out'], correct: 3, explain: 'Scale out adds more instances in parallel (horizontal); scale up changes the size of an existing instance (vertical).' },
+    { id: 139, dom: 'd3', obj: '3.4', q: 'Numeric values such as CPU percentage, disk IOPS or request count, collected at regular intervals and suited to near-real-time charts and alerts, are stored in Azure Monitor as which data type?', opts: ['Logs', 'Traces', 'Metrics', 'Activity log entries'], correct: 2, explain: 'Metrics are lightweight numeric time-series data collected at fixed intervals, ideal for fast charts and threshold alerts. Logs are richer event records (text and properties) stored in a Log Analytics workspace and queried with KQL.' },
+    { id: 102, dom: 'd2', obj: '2.2', q: 'A team configuring a VPN Gateway names their gateway subnet "VPN-Subnet". What will happen?', opts: ['Azure will rename the subnet to GatewaySubnet automatically during deployment', 'The gateway will deploy normally; the subnet name has no special meaning', 'The VPN Gateway deployment will fail — the subnet must be named exactly GatewaySubnet', 'The gateway will deploy, but only Point-to-Site connections will be supported'], correct: 2, explain: 'The gateway subnet must be named exactly "GatewaySubnet" (case-sensitive) or the VPN Gateway deployment won’t work — same rule applies to "AzureBastionSubnet" for Azure Bastion.' },
+    { id: 154, dom: 'd3', obj: '3.1', q: 'Two identical VMs run in different regions. Their monthly costs differ even though size, OS and running hours are the same. What explains the difference?', opts: ['Costs differ because one VM has a resource lock, which is billed separately', 'Costs differ because one subscription has more resource groups than the other', 'Costs differ because Azure prices the same VM size differently by region', 'Costs differ because one VM is in a management group with a policy assigned'], correct: 2, explain: 'Region is a cost factor: the same SKU can have different prices in different regions. Locks, resource groups, management groups and policies are free and do not change VM pricing.' },
+    { id: 9, dom: 'd1', obj: '1.2', q: 'Which term describes a service’s ability to remain available even during planned maintenance or unexpected failures?', opts: ['Elasticity', 'High availability', 'Fault isolation', 'Scalability'], correct: 1, explain: 'High availability specifically refers to keeping the service up, both through failures and during maintenance.' },
+    { id: 70, dom: 'd2', obj: '2.1', q: 'What is the main purpose of the "region pair" concept in Azure?', opts: ['To replicate every resource automatically to the second region at no extra cost', 'To coordinate platform updates and provide a basis for disaster recovery between two regions', 'To keep both regions inside the same availability zone for lower latency', 'To allow a single virtual network to span two regions without peering'], correct: 1, explain: 'Every Azure region is paired with another within the same geography; Azure staggers platform updates between pairs, and with GRS data is replicated to the pair by default.' },
+    { id: 133, dom: 'd3', obj: '3.3', q: 'An administrator with years of Windows PowerShell experience wants to automate Azure tasks using cmdlets such as New-AzResourceGroup and Get-AzVM. Which tool provides these?', opts: ['Azure PowerShell (the Az module)', 'Azure CLI (the az command)', 'Azure Cloud Shell (Bash only)', 'Azure Resource Manager REST API'], correct: 0, explain: 'Azure PowerShell is the set of Az cmdlets for managing Azure from PowerShell. Azure CLI uses az commands instead; both can run locally or inside Cloud Shell.' },
+    { id: 151, dom: 'd2', obj: '2.4', q: 'An organization wants partners from other companies to access a shared app with their own corporate credentials, without creating internal accounts for them. Which Microsoft Entra feature applies?', opts: ['Microsoft Entra Domain Services with a trust to each partner domain', 'Conditional Access with a named location for each partner company', 'Microsoft Entra Privileged Identity Management with guest role activation', 'Microsoft Entra External ID B2B collaboration (guest users)'], correct: 3, explain: 'B2B collaboration invites external users as guests who sign in with their own identity provider. Domain Services, Conditional Access and PIM do not create cross-organization access on their own.' },
+    { id: 96, dom: 'd1', obj: '1.1', q: 'A cloud characteristic where every resource’s usage is automatically tracked and billed based on actual consumption is called:', opts: ['Resource pooling', 'Measured service', 'On-demand self-service', 'Broad network access'], correct: 1, explain: 'Measured service means usage is metered transparently — you’re billed for what you actually consumed, not a flat estimate.' },
+    { id: 58, dom: 'd3', obj: '3.2', q: 'What best describes the "Preview" lifecycle stage of an Azure service?', opts: ['It is the final, generally available version', 'It is a version that has been announced for retirement', 'It is an early version for testing, generally without a guaranteed SLA', 'It is a production-ready version with a full SLA'], correct: 2, explain: 'Preview services let you try new functionality, but typically don’t carry the same SLA commitment as General Availability (GA).' },
+    { id: 149, dom: 'd2', obj: '2.3', q: 'A storage account must keep data readable if the entire primary region is lost, and must also stay fully available if a single datacenter in the primary region fails. Which redundancy option satisfies both?', opts: ['Read-access geo-zone-redundant storage (RA-GZRS)', 'Read-access geo-redundant storage (RA-GRS)', 'Zone-redundant storage (ZRS)', 'Geo-redundant storage (GRS)'], correct: 0, explain: 'GZRS copies data across zones in the primary region (surviving a datacenter loss) and to a secondary region; the RA- variant makes the secondary readable without a failover. RA-GRS is only LRS in the primary; ZRS has no second region.' },
+    { id: 4, dom: 'd1', obj: '1.1', q: 'In the shared responsibility model, who is always responsible for protecting data and identities, regardless of the service model?', opts: ['Microsoft, always', 'The customer, always', 'It depends only on the region', 'It’s always split 50/50'], correct: 1, explain: 'Data, identities, and devices are the customer’s responsibility across all three models — what changes is how much of the infrastructure Microsoft manages.' },
+    { id: 115, dom: 'd2', obj: '2.4', q: 'Which set of principles defines Microsoft’s Zero Trust security model?', opts: ['Trust but verify, patch quickly, encrypt everything', 'Perimeter defense, network segmentation, physical security', 'Deny by default, audit everything, rotate credentials monthly', 'Verify explicitly, use least-privilege access, assume breach'], correct: 3, explain: 'Zero Trust’s motto is "never trust, always verify," built on three principles: verify explicitly, use least-privilege access, and assume breach — no user, device, or network location is trusted automatically.' },
+    { id: 158, dom: 'd3', obj: '3.3', q: 'A team wants to deploy the same environment repeatedly from a template and needs the deployment to be idempotent, so re-running it never creates duplicates. Which statement is TRUE?', opts: ['Only Bicep is idempotent; ARM JSON templates create duplicates when re-run', 'Only Azure CLI scripts are idempotent, because each command checks for existence first', 'Idempotency requires Terraform; native Azure tooling cannot guarantee it', 'Both ARM templates and Bicep are declarative and idempotent; a CLI script has to handle that itself'], correct: 3, explain: 'ARM templates and Bicep describe the desired state, and Resource Manager reconciles existing resources to it — re-running is safe. Imperative CLI scripts must add their own checks to avoid duplicates or errors.' },
+    { id: 44, dom: 'd2', obj: '2.1', q: 'An organization with hundreds of subscriptions wants to apply the same governance rules to all of them at once. Which hierarchy level does it use for that?', opts: ['Availability zone', 'Management group', 'Microsoft 365 tenant', 'Resource group'], correct: 1, explain: 'Management groups sit above subscriptions in the hierarchy and let you apply policies and RBAC to many subscriptions at once.' },
+    { id: 112, dom: 'd3', obj: '3.1', q: 'A startup is running entirely on the free Basic support plan and their production app goes down. Can they open a technical support ticket with Microsoft under this plan?', opts: ['Yes — Basic allows technical tickets, but only for security-related incidents', 'No — Basic covers billing and subscription management, documentation and community forums; no technical tickets', 'Yes — Basic allows technical tickets, but only during business hours and by email', 'Yes — Basic includes technical support tickets with a 24-hour initial response time'], correct: 1, explain: 'Basic is free with every subscription but is limited to billing and subscription support — it does NOT allow opening technical support tickets. The minimum plan for production support is Standard.' },
+    { id: 68, dom: 'd1', obj: '1.1', q: 'What’s a typical disadvantage of the consumption-based cost model compared with a predictable fixed monthly cost?', opts: ['Spending can never be monitored', 'It doesn’t allow paying only for what you use', 'It’s always more expensive than buying your own hardware', 'Cost can vary based on actual usage, making it harder to forecast exactly'], correct: 3, explain: 'Paying by consumption gives flexibility, but spending can fluctuate month to month based on actual usage — that’s why tools like budgets and Cost Management exist to monitor it.' },
+    { id: 27, dom: 'd2', obj: '2.2', q: 'Which Azure service balances incoming traffic across multiple instances of an application?', opts: ['Azure Policy', 'Azure Load Balancer', 'Azure Monitor', 'Azure Key Vault'], correct: 1, explain: 'Azure Load Balancer distributes network traffic across multiple backend instances.' },
+    { id: 59, dom: 'd3', obj: '3.2', q: 'What is Microsoft’s Trust Center?', opts: ['The portal where subscriptions and billing accounts for the tenant are managed', 'A support tier that includes security reviews of the customer’s deployment', 'The portal where Microsoft documents its security, privacy, and compliance posture', 'The dashboard where network and security monitoring alerts are reviewed'], correct: 2, explain: 'The Trust Center centralizes Microsoft’s public documentation on security, privacy, compliance, and transparency.' },
+    { id: 31, dom: 'd2', obj: '2.3', q: 'Which redundancy option protects against the complete loss of a region by replicating to a distant secondary region?', opts: ['ZRS', 'LRS', 'None, they all protect equally', 'GRS'], correct: 3, explain: 'GRS (and its variants) asynchronously replicate data to a paired secondary region, protecting against a full regional disaster.' },
+    { id: 12, dom: 'd1', obj: '1.1', q: 'What best describes "economies of scale" in the context of Azure?', opts: ['A pricing model where the discount grows with the number of subscriptions', 'A licensing program that bundles Windows Server with virtual machines', 'Lower per-unit costs thanks to Microsoft buying and operating at huge volume', 'A discount tier reserved for governments and large enterprises'], correct: 2, explain: 'Microsoft buys and operates hardware at a scale no individual customer could match, lowering the cost per unit.' },
+    { id: 118, dom: 'd3', obj: '3.3', q: 'A team wants an Infrastructure as Code tool that can also manage resources in AWS and Google Cloud from the same codebase, not just Azure. Which tool fits, while still deploying to Azure through Azure Resource Manager under the hood?', opts: ['Azure Blueprints', 'Bicep', 'ARM templates', 'Terraform'], correct: 3, explain: 'Terraform is cloud-agnostic and can manage multiple providers from one codebase; when it targets Azure, it still goes through Azure Resource Manager like ARM templates and Bicep do. Bicep and ARM templates are Azure-only.' },
+    { id: 104, dom: 'd2', obj: '2.4', q: 'An NSG has two rules that both match a piece of traffic: one with priority 100 and one with priority 200. Which rule applies?', opts: ['Priority 200, because higher numbers take precedence over lower ones', 'Whichever rule was created most recently, regardless of priority', 'Priority 100, because lower numbers are evaluated first and take precedence', 'Both rules apply, and the more restrictive one wins for that traffic'], correct: 2, explain: 'NSG rules are evaluated from lowest priority number to highest; the first matching rule wins and evaluation stops there, so priority 100 beats priority 200.' },
+    { id: 13, dom: 'd1', obj: '1.1', q: 'Which of the following is NOT a typical characteristic of cloud computing?', opts: ['Rapid elasticity', 'Dedicated hardware per customer', 'Broad network access', 'On-demand self-service'], correct: 1, explain: 'The cloud is built on shared, pooled resources, not permanently dedicated hardware exclusive to a single customer.' },
+    { id: 26, dom: 'd2', obj: '2.3', q: 'Which Azure disk type is recommended for I/O-demanding production workloads, such as transactional databases?', opts: ['File storage', 'Premium SSD', 'Standard SSD', 'Standard HDD'], correct: 1, explain: 'Premium SSD disks offer the highest performance and lowest latency, recommended for critical production workloads.' },
+    { id: 136, dom: 'd3', obj: '3.4', q: 'A development team wants to monitor a web application itself — request rates, response times, failed requests and dependency calls — rather than the VM it runs on. Which Azure Monitor feature is designed for this?', opts: ['Azure Advisor', 'Azure Service Health', 'Resource Health', 'Application Insights'], correct: 3, explain: 'Application Insights is the application performance management (APM) feature of Azure Monitor: it instruments the app code to collect telemetry about requests, exceptions, dependencies and user behavior.' },
+    { id: 153, dom: 'd2', obj: '2.4', q: 'Which statement about the Zero Trust security model is accurate?', opts: ['Every request is verified explicitly, regardless of whether it originates inside or outside the corporate network', 'Traffic that originates inside the corporate network is trusted once the perimeter firewall has admitted it', 'Users receive standing administrator access so that verification is not needed on every request', 'It is a product that replaces MFA, Conditional Access and RBAC with a single sign-in policy'], correct: 0, explain: 'Zero Trust principles: verify explicitly, use least-privilege (just-in-time) access, and assume breach. It is a model applied with tools like MFA, Conditional Access and RBAC — not a product that replaces them.' },
+    { id: 155, dom: 'd3', obj: '3.1', q: 'A finance team wants to see which department generated which costs in a subscription where all resources share the same resource groups. What is the most practical mechanism?', opts: ['Create a separate subscription per department and move every resource into it', 'Apply a resource lock per department so that costs are tracked per lock', 'Assign a management group per department and read the costs at that scope', 'Apply a department tag to each resource and group cost analysis by that tag'], correct: 3, explain: 'Tags are name/value metadata on resources; Cost Management can filter and group costs by tag, which is the standard way to attribute spend across teams without restructuring subscriptions.' },
+    { id: 16, dom: 'd1', obj: '1.2', q: 'What role does "fault tolerance" play in a service’s availability?', opts: ['It prevents failures entirely by replacing components before they wear out', 'It lets the service keep running even if an individual component fails', 'It restores the service from backups after a datacenter-wide outage', 'It guarantees that data is never lost, even when a whole region fails'], correct: 1, explain: 'Fault tolerance means designing the system so a single failure doesn’t bring down the whole service — it doesn’t eliminate failures, it absorbs them.' },
+    { id: 35, dom: 'd2', obj: '2.2', q: 'Which service distributes user traffic globally to the closest or healthiest endpoint?', opts: ['Azure Load Balancer', 'Azure Traffic Manager', 'Azure Application Gateway', 'Azure VPN Gateway'], correct: 1, explain: 'Traffic Manager is a global DNS-based load balancer that routes users to the optimal endpoint across regions.' },
+    { id: 53, dom: 'd3', obj: '3.2', q: 'Which governance element bundles policies, RBAC roles, and ARM templates into a repeatable package to meet an organizational standard?', opts: ['Microsoft Entra ID', 'Azure Cost Management', 'Azure Monitor', 'Azure Blueprints'], correct: 3, explain: 'Blueprints packages policies + RBAC + ARM templates as a single versioned, repeatable unit.' },
+    { id: 101, dom: 'd2', obj: '2.3', q: 'A team wants an Azure Storage account to keep its existing public IP address, but only accept traffic from a specific VNet/subnet over Azure’s private backbone, without assigning the storage account a new private IP. Which feature fits best?', opts: ['Service endpoint', 'Azure Bastion', 'Private endpoint (Azure Private Link)', 'Public endpoint'], correct: 0, explain: 'A service endpoint extends your VNet’s identity to the service and keeps traffic on Azure’s backbone, but the service keeps its public IP — a private endpoint would instead assign it a new private IP inside your VNet.' },
+    { id: 10, dom: 'd1', obj: '1.1', q: 'Which of these is a classic example of capital expenditure (CapEx) that the public cloud helps avoid?', opts: ['Automatically scaling instances', 'Paying only for the storage used', 'Buying your own datacenter', 'Paying a monthly subscription'], correct: 2, explain: 'Building or buying a datacenter is the classic upfront capital investment that the cloud’s consumption model replaces with operational expenditure.' },
+    { id: 57, dom: 'd3', obj: '3.1', q: 'What are "Reserved Instances" in Azure?', opts: ['Virtual machines that are pre-allocated to guarantee capacity in a region', 'A discount in exchange for committing to use a resource for 1 or 3 years', 'An RBAC role that allows reserving capacity on behalf of a subscription', 'A type of dedicated host where instances are reserved for a single tenant'], correct: 1, explain: 'Committing to 1 or 3 years of use for a specific resource gives a substantial discount over pay-as-you-go pricing.' },
+    { id: 106, dom: 'd2', obj: '2.4', q: 'Instead of writing NSG rules that reference individual VM IP addresses, a team wants to write a rule that applies to "all web tier VMs" and have new VMs automatically inherit it. What feature enables this?', opts: ['Resource tags referenced in the rule', 'Availability sets used as the rule source', 'Application Security Groups (ASGs)', 'Azure Firewall network rule collections'], correct: 2, explain: 'ASGs let you group VMs by application role (e.g. "WebServers") and write NSG rules against that group instead of individual IPs — adding a VM to the group automatically applies the rule.' },
+    { id: 114, dom: 'd3', obj: '3.2', q: 'Besides evaluating resources at creation or update time, how often does Azure Policy re-scan existing resources for compliance?', opts: ['Once a week', 'Never — only new or updated resources are ever checked', 'Only when manually triggered by an administrator', 'Every 24 hours'], correct: 3, explain: 'Azure Policy evaluates in real time during resource creation/updates, and also runs a compliance scan on existing resources roughly every 24 hours, so drift gets caught even if a resource was compliant yesterday.' },
+    { id: 20, dom: 'd2', obj: '2.2', q: 'A company needs to run code only when a specific event occurs, without keeping a server running all the time. Which service fits best?', opts: ['Azure Kubernetes Service', 'Azure SQL Database', 'Azure Functions', 'Azure Virtual Machines'], correct: 2, explain: 'Azure Functions is event-driven serverless compute — it only runs (and is billed) when the event triggers the code.' },
+    { id: 14, dom: 'd1', obj: '1.1', q: 'A company needs certain data to remain in its own datacenter for regulatory reasons, but wants to use Azure for the rest of its workloads. Which model describes this?', opts: ['Pure SaaS', 'Pure public cloud', 'Hybrid cloud', 'Community cloud'], correct: 2, explain: 'Hybrid cloud is exactly this scenario: keeping certain data on-premises for compliance while using the public cloud for the rest.' },
+    { id: 48, dom: 'd2', obj: '2.4', q: 'Which security principle establishes "never trust, always verify," validating every request regardless of its origin?', opts: ['Least privilege', 'Defense in depth', 'Shared responsibility', 'Zero Trust'], correct: 3, explain: 'Zero Trust requires explicit verification of every request, without assuming automatic trust just because it originates inside the corporate network.' },
+    { id: 157, dom: 'd3', obj: '3.2', q: 'A resource group has a ReadOnly lock. An administrator with the Owner role tries to add a tag to a VM in that resource group. What is the outcome?', opts: ['The operation is denied, because a ReadOnly lock blocks modifications for all users, including Owners', 'The operation succeeds, because Owner permissions take precedence over resource locks', 'The operation succeeds, because tags are metadata and are not covered by locks', 'The operation is denied only if the lock was created at the subscription scope'], correct: 0, explain: 'Locks apply regardless of role: a ReadOnly lock allows only read operations on the locked scope and everything under it. To modify the resource, someone with permission must remove the lock first.' },
+    { id: 67, dom: 'd1', obj: '1.2', q: 'A startup launches its app on three continents in the same week without buying local hardware in each region. Which cloud benefit does this best illustrate?', opts: ['Global reach', 'Centralized governance', 'Automatic regulatory compliance', 'Resilience to hardware failures'], correct: 0, explain: 'Global reach is being able to deploy in the provider’s datacenters across multiple regions almost immediately, without building your own infrastructure in each location.' },
+    { id: 24, dom: 'd2', obj: '2.2', q: 'Which option best describes Azure Kubernetes Service (AKS)?', opts: ['A billing tool', 'An identity service', 'A managed relational database', 'Managed container orchestration'], correct: 3, explain: 'AKS manages the Kubernetes control plane for you, simplifying container deployment and scaling.' },
+    { id: 122, dom: 'd3', obj: '3.1', q: 'Which of the following does NOT normally affect the monthly cost of an Azure virtual machine?', opts: ['The region where the VM is deployed', 'The number of subscriptions in the tenant', 'The VM size (vCPUs and memory)', 'How many hours per month the VM is running'], correct: 1, explain: 'VM cost depends on size, region, running time, OS licensing and attached disks. Having more or fewer subscriptions in the tenant does not change the price of an individual VM.' },
+    { id: 47, dom: 'd2', obj: '2.4', q: 'Which Azure service centralizes the secure management of secrets, keys, and certificates?', opts: ['Azure Blueprints', 'Azure Monitor', 'Azure Policy', 'Azure Key Vault'], correct: 3, explain: 'Key Vault stores and protects secrets, cryptographic keys, and certificates, keeping them out of hardcoded application code.' },
+    { id: 69, dom: 'd1', obj: '1.1', q: 'A company with sensitive data that must stay on-premises for regulatory reasons, but wants to take advantage of cloud elasticity for variable workloads. Which model best describes its architecture?', opts: ['Community cloud', 'Hybrid cloud', 'Isolated private cloud with no external connection', 'Pure public cloud'], correct: 1, explain: 'Hybrid cloud combines on-premises (or private) resources with the public cloud, typical when data residency requirements coexist with a need for elasticity.' },
+    { id: 140, dom: 'd3', obj: '3.4', q: 'A company wants to be warned in advance whenever Microsoft schedules planned maintenance that will affect the specific Azure resources the company uses, so it can prepare. Which feature should it configure?', opts: ['An Azure Advisor recommendation digest', 'An Azure Monitor metric alert on the VMs', 'A Cost Management budget alert', 'A Service Health alert for planned maintenance events'], correct: 3, explain: 'Azure Service Health tracks service issues, planned maintenance and health advisories that affect your resources; Service Health alerts push those events to an action group so you are notified proactively.' },
+    { id: 40, dom: 'd2', obj: '2.3', q: 'Which storage service is best suited for message queues that decouple components of an application?', opts: ['Azure Files', 'Azure Blob Storage', 'Azure Queue Storage', 'Azure Disk Storage'], correct: 2, explain: 'Queue Storage is specifically designed for asynchronous messaging between application components.' },
+    { id: 123, dom: 'd3', obj: '3.1', q: 'A company moves large volumes of data every day from Azure Storage to users in its own on-premises office. Which network-related cost should it expect on its Azure bill?', opts: ['Inbound (ingress) data transfer into Azure is charged per GB; outbound is free', 'Traffic inside the same region is charged at a flat rate; cross-region traffic is free', 'Outbound (egress) data transfer leaving Azure is charged per GB; inbound is generally free', 'Data transfer is charged only when it crosses between two different subscriptions'], correct: 2, explain: 'Azure bills outbound bandwidth (data leaving Azure datacenters) per GB above a small free amount; data coming into Azure is generally free.' },
+    { id: 21, dom: 'd2', obj: '2.3', q: 'Which Azure storage type is best suited for storing millions of unstructured images and backup files?', opts: ['Azure Queue Storage', 'Azure Blob Storage', 'Azure Disk Storage', 'Azure Table Storage'], correct: 1, explain: 'Blob Storage is designed for unstructured objects at scale: images, video, backups, logs.' },
+    { id: 2, dom: 'd1', obj: '1.3', q: 'A team needs full control over the operating system and middleware, but doesn’t want to buy physical servers. Which service model fits?', opts: ['FaaS', 'IaaS', 'SaaS', 'PaaS'], correct: 1, explain: 'IaaS delivers virtualized infrastructure (VMs, networking, storage); the customer still manages the OS and everything above it.' },
+    { id: 150, dom: 'd2', obj: '2.3', q: 'Which access tier is the right choice for monthly invoice PDFs that must be retained for years and are rarely opened, but when requested must be available within milliseconds?', opts: ['Archive tier, because rehydration happens automatically on first access', 'Hot tier, because retention period does not influence the tier choice', 'Cool or cold tier, which stays online while charging less for storage', 'Premium tier, because it is optimized for infrequently accessed data'], correct: 2, explain: 'Cool and cold are online tiers with lower storage cost for infrequent access. Archive is offline: reading requires rehydration that takes hours. Hot costs more to store; premium is for high-performance workloads.' },
+    { id: 127, dom: 'd3', obj: '3.2', q: 'A team must guarantee that a production database can never be deleted by mistake, but administrators still need to change its configuration (for example, scale it up). Which lock type should be applied?', opts: ['A ReadOnly lock', 'An RBAC deny assignment', 'A CanNotDelete (Delete) lock', 'An Azure Policy with the deny effect'], correct: 2, explain: 'A CanNotDelete lock blocks deletion but still allows reads and modifications. A ReadOnly lock would also block configuration changes.' },
+    { id: 51, dom: 'd2', obj: '2.4', q: 'Which service detects threats and provides security posture recommendations for cloud and hybrid workloads?', opts: ['Azure Monitor with security insights', 'Microsoft Defender for Cloud', 'Azure Policy with the security initiative', 'Azure Advisor security recommendations'], correct: 1, explain: 'Microsoft Defender for Cloud (formerly Security Center) evaluates security posture and detects active threats.' },
+    { id: 95, dom: 'd1', obj: '1.1', q: 'What is a genuine downside of consumption-based (pay-as-you-go) pricing compared to a fixed monthly cost?', opts: ['It cannot be combined with reserved capacity or hybrid licensing discounts', 'It always costs more than owning hardware once the workload runs steadily', 'It does not allow scaling down until the end of the billing month', 'Monthly spend can vary and is harder to predict exactly without monitoring tools'], correct: 3, explain: 'Consumption-based pricing gives flexibility, but the bill fluctuates with actual usage — which is exactly why budgets and Cost Management exist, to keep that variability under control.' },
+    { id: 46, dom: 'd3', obj: '3.4', q: 'Which Azure tool gives personalized cost, security, performance, and reliability recommendations for existing resources?', opts: ['Azure Policy', 'Microsoft Defender for Cloud alone', 'Azure Advisor', 'Azure Monitor'], correct: 2, explain: 'Azure Advisor analyzes the actual configuration and suggests concrete cost, security, performance, and reliability actions.' },
+    { id: 80, dom: 'd2', obj: '2.1', q: 'A global application needs low read/write latency across multiple continents with a flexible data model (not strictly relational). Which Azure service fits best?', opts: ['Azure Cosmos DB with multi-region replication', 'Azure Data Lake with no replicas', 'Azure Files', 'A single-instance Azure SQL Database'], correct: 0, explain: 'Cosmos DB is designed for global distribution with SLA-backed low latency and supports multiple data models (document, key-value, graph, wide-column), unlike a single-instance relational database.' },
+    { id: 130, dom: 'd3', obj: '3.3', q: 'An administrator is on a computer where nothing can be installed, but needs to run a few Azure CLI and PowerShell commands. Which option lets them do this directly from a web browser?', opts: ['Azure Arc', 'Azure Cloud Shell', 'Azure Resource Manager', 'Azure Bastion'], correct: 1, explain: 'Azure Cloud Shell is a browser-based shell inside the Azure portal (and shell.azure.com) with Azure CLI and Azure PowerShell pre-installed and authenticated.' },
+    { id: 143, dom: 'd1', obj: '1.2', q: 'A company runs its web tier across two availability zones behind a load balancer, and also replicates its database to a second region with a documented manual failover. Which pairing describes what each measure delivers?', opts: ['Zones deliver disaster recovery; the second region delivers scalability', 'Zones deliver elasticity; the second region delivers high availability', 'Zones deliver predictability; the second region delivers fault tolerance', 'Zones deliver high availability; the second region delivers disaster recovery'], correct: 3, explain: 'Spreading instances across zones keeps the service running through a datacenter failure (high availability). A copy in another region that you fail over to after a major outage is disaster recovery.' },
+    { id: 147, dom: 'd2', obj: '2.2', q: 'A company must connect its datacenter to Azure with predictable throughput and without traffic crossing the public internet; a small branch office needs an encrypted connection over its existing internet link. Which pairing fits?', opts: ['VNet peering for the datacenter; ExpressRoute for the branch office', 'Point-to-Site VPN for the datacenter; ExpressRoute for the branch office', 'Azure Front Door for the datacenter; Site-to-Site VPN for the branch office', 'ExpressRoute for the datacenter; Site-to-Site VPN for the branch office'], correct: 3, explain: 'ExpressRoute is a private, dedicated circuit that bypasses the internet. A Site-to-Site VPN encrypts traffic between an on-premises gateway and Azure over the public internet — right for a branch.' },
+    { id: 56, dom: 'd3', obj: '3.1', q: 'What are "budgets" within Azure Cost Management?', opts: ['Configurable thresholds that trigger alerts as spending approaches or exceeds an amount', 'Monthly spending reports generated automatically and emailed to the subscription owner', 'Hard limits that automatically stop or deallocate resources when the amount is reached', 'Volume discount tiers that apply once a subscription crosses a monthly spending amount'], correct: 0, explain: 'Budgets trigger alerts when spending thresholds are reached; they don’t stop resources on their own unless an extra action is configured.' },
+    { id: 72, dom: 'd2', obj: '2.1', q: 'An organization wants to apply the same Azure Policy to 15 different subscriptions at once, without configuring it subscription by subscription. What should it use?', opts: ['A management group containing those subscriptions', 'A blueprint definition assigned to those subscriptions', 'A shared resource group linked from those subscriptions', 'A policy tag applied to every resource in those subscriptions'], correct: 0, explain: 'Management groups group subscriptions together so Policy, RBAC, or compliance can be applied hierarchically all at once, instead of repeating the configuration in each subscription.' },
+    { id: 8, dom: 'd1', obj: '1.1', q: 'What combines on-premises resources with public cloud resources, allowing workloads to move between the two?', opts: ['Private cloud', 'Multi-cloud', 'Hybrid cloud', 'Community cloud'], correct: 2, explain: 'Hybrid cloud connects owned infrastructure with the public cloud, typical in gradual migrations or when data must stay local.' },
+    { id: 81, dom: 'd2', obj: '2.1', q: 'An architecture needs to ingest millions of IoT sensor telemetry events per second for real-time analysis. Which Azure messaging service is specifically designed for that streaming volume?', opts: ['Azure Event Hub', 'Azure Service Bus (enterprise queues)', 'Azure Event Grid (reactive events)', 'Azure Logic Apps'], correct: 0, explain: 'Event Hub is optimized for massive event streaming ingestion (millions per second) like telemetry/IoT; Service Bus is for reliable point-to-point enterprise messaging, and Event Grid is for reactive events at relatively low volume.' },
+    { id: 135, dom: 'd3', obj: '3.4', q: 'An operations team wants to run queries written in Kusto Query Language (KQL) across logs collected from many VMs and services. Which Azure Monitor component stores that data and runs the queries?', opts: ['Azure Advisor', 'Azure Service Health', 'A Log Analytics workspace', 'Azure Resource Health'], correct: 2, explain: 'A Log Analytics workspace is the store for log data in Azure Monitor; you query it with KQL to analyze, correlate and visualize what happened across resources.' },
+    { id: 75, dom: 'd2', obj: '2.3', q: 'A company needs its data to remain available for reads even if the entire primary Azure region suffers a total outage, without waiting for a manual failover. Which storage redundancy option is most appropriate?', opts: ['RA-GRS (geo-redundant with read access)', 'No storage option offers this', 'ZRS (zone redundancy)', 'LRS (local redundancy)'], correct: 0, explain: 'RA-GRS replicates data to a distant secondary region AND allows reading it there even without a failover — LRS and ZRS never leave the primary region.' },
+    { id: 141, dom: 'd1', obj: '1.1', q: 'A retailer keeps its customer database in its own datacenter for data-residency reasons but hosts its public website in Azure, with the two connected over a VPN. Which statement about this setup is accurate?', opts: ['It is a multi-cloud model, because two separately managed environments host parts of one solution', 'It is a private cloud model, because the data never leaves infrastructure the retailer controls', 'It is a hybrid cloud model, because on-premises and public cloud resources form one connected solution', 'It is a public cloud model, because the customer-facing component runs in a public cloud'], correct: 2, explain: 'Hybrid cloud = on-premises infrastructure and public cloud working together as one solution. Multi-cloud would mean two public cloud providers; private cloud would mean everything on dedicated infrastructure.' },
+    { id: 128, dom: 'd3', obj: '3.2', q: 'A compliance team wants to group several related Azure Policy definitions (for example, all the rules required by ISO 27001) so they can be assigned and tracked as a single unit. What is this grouping called?', opts: ['A management group scope that groups the subscriptions', 'A resource group that groups the affected resources', 'A policy exemption that groups the excluded scopes', 'An initiative (policy set definition)'], correct: 3, explain: 'An initiative (also called a policy set) bundles multiple policy definitions so they can be assigned together and their compliance reported as one.' },
+    { id: 108, dom: 'd2', obj: '2.3', q: 'Which pair of storage redundancy options both provide continuous READ access to a secondary region copy, even without Microsoft initiating a failover?', opts: ['RA-GRS and RA-GZRS', 'All six redundancy options provide this', 'LRS and ZRS', 'GRS and GZRS'], correct: 0, explain: 'The "RA" (Read-Access) prefix is what grants read access to the secondary region copy at any time — RA-GRS and RA-GZRS have it, while plain GRS and GZRS replicate the data but don’t expose it for reads until an actual failover.' },
+    { id: 160, dom: 'd3', obj: '3.4', q: 'A team receives an alert that a region-wide storage incident is in progress. Which tool sent it, and how does it differ from a metric alert?', opts: ['Azure Advisor — it warns about incidents, while metric alerts warn about cost anomalies', 'Resource Health — it reports platform incidents, while metric alerts cover only logs', 'Service Health — it reports Azure platform incidents, while metric alerts react to values from your own resources', 'Azure Monitor Logs — it stores incident data, while metric alerts are configured in Advisor'], correct: 2, explain: 'Service Health alerts come from Microsoft about the platform (incidents, maintenance, advisories). Metric alerts are rules you define on telemetry from your own resources, such as CPU or request count.' },
+    { id: 61, dom: 'd1', obj: '1.1', q: 'A company lowers its cost per unit of compute by consuming services in a datacenter shared with thousands of a cloud provider’s customers. Which concept best describes this benefit?', opts: ['Geographic redundancy', 'High availability', 'Fault tolerance', 'Economies of scale'], correct: 3, explain: 'Economies of scale let the cost of infrastructure be spread across huge numbers of customers, lowering the cost per unit compared with each company running its own datacenter.' },
+    { id: 98, dom: 'd2', obj: '2.2', q: 'Which address space provides MORE usable IP addresses: 10.0.0.0/16 or 10.0.0.0/24?', opts: ['10.0.0.0/24 — a bigger number after the slash means more addresses', 'They provide exactly the same number of addresses', '10.0.0.0/16 — a smaller number after the slash means more addresses', 'CIDR notation doesn’t affect address count'], correct: 2, explain: 'In CIDR notation, a smaller suffix means fewer bits reserved for the network, leaving more for hosts — /16 gives about 65,000 addresses versus /24’s 256.' },
+    { id: 89, dom: 'd3', obj: '3.2', q: 'What’s the main difference between the Cloud Adoption Framework (CAF) and the Well-Architected Framework (WAF) in Azure?', opts: ['WAF sets the organizational governance model; CAF defines the technical pillars for each workload', 'CAF and WAF are the same guidance, published separately for enterprises and for small businesses', 'CAF applies only to migrations from on-premises; WAF applies only to applications built new in Azure', 'CAF guides the organizational strategy and process of adoption; WAF focuses on technical design principles for workloads'], correct: 3, explain: 'CAF covers the full organizational journey of cloud adoption (strategy, planning, governance); WAF focuses on how to design a specific workload well, according to pillars like reliability, security, and cost.' },
+    { id: 30, dom: 'd2', obj: '2.3', q: 'Which Azure redundancy tier synchronously copies data within a single datacenter?', opts: ['GRS (Geo-Redundant Storage)', 'RA-GRS', 'LRS (Locally Redundant Storage)', 'GZRS'], correct: 2, explain: 'LRS synchronously replicates three copies within a single datacenter — the cheapest option with the least geographic protection.' },
+    { id: 92, dom: 'd1', obj: '1.2', q: 'Which annual downtime figure corresponds to an SLA of 99.99%?', opts: ['About 5 minutes', 'About 53 minutes', '4.38 hours', '8.76 hours'], correct: 1, explain: '99.9% = 8.76 hours/year, 99.95% = 4.38 hours/year, 99.99% = about 53 minutes/year, 99.999% = about 5 minutes/year — higher percentage means dramatically less downtime.' },
+    { id: 39, dom: 'd2', obj: '2.1', q: 'What’s the main purpose of a resource group in an Azure subscription?', opts: ['To group resources with the same lifecycle so they are managed and deleted together', 'To isolate resources into a separate billing account with its own invoice', 'To act as a network boundary that resources in other groups cannot cross', 'To define which region every resource inside it must be deployed to'], correct: 0, explain: 'The resource group groups by lifecycle and joint management, not by billing or a mandatory one-to-one hierarchy.' },
+    { id: 119, dom: 'd3', obj: '3.4', q: 'Which of the following is NOT one of Azure Advisor’s five recommendation categories?', opts: ['Operational excellence', 'Compliance', 'Reliability', 'Cost'], correct: 1, explain: 'Azure Advisor’s five categories are performance, security, reliability, cost, and operational excellence. Compliance tracking against standards like ISO 27001 or GDPR is handled by Microsoft Defender for Cloud’s Regulatory Compliance Dashboard, not Advisor.' },
+    { id: 117, dom: 'd2', obj: '2.4', q: 'What is the key difference between the free tier and the paid Defender plans in Microsoft Defender for Cloud?', opts: ['The free tier includes every feature; paid plans only add longer data retention', 'The free tier provides posture management and Secure Score; paid plans add active threat detection per workload', 'There is no free tier — every feature of Defender for Cloud requires a paid plan', 'The free tier covers virtual machines only; paid plans are required for other resources'], correct: 1, explain: 'The free tier gives you Cloud Security Posture Management (recommendations, Secure Score); the paid Defender plans (Defender for Servers, Storage, SQL, etc.) add Cloud Workload Protection — active threat detection for specific resource types.' },
+    { id: 125, dom: 'd3', obj: '3.1', q: 'A nightly batch job can be interrupted at any moment and simply restarted later without any business impact. Which VM pricing option gives the largest discount for this kind of workload?', opts: ['Spot Virtual Machines', 'Reserved Instances (1 or 3 years)', 'Pay-as-you-go with auto-shutdown', 'Azure Hybrid Benefit'], correct: 0, explain: 'Spot VMs use unused Azure capacity at very deep discounts, but Azure can evict them at any time — which is fine for interruptible batch jobs. Reserved Instances discount steady, long-running workloads instead.' },
+    { id: 63, dom: 'd1', obj: '1.1', q: 'Which spending model best represents paying a subscription based on actual consumption, without buying hardware upfront?', opts: ['Sunk cost', 'Opex (operational expenditure)', 'Capex (capital expenditure)', 'Perpetual licensing'], correct: 1, explain: 'The cloud consumption model is Opex: you pay for usage, with no upfront hardware investment (Capex).' },
+    { id: 74, dom: 'd2', obj: '2.2', q: 'What’s the key difference between Azure Container Instances (ACI) and Azure Kubernetes Service (AKS)?', opts: ['AKS runs Linux containers only; ACI runs both Windows and Linux containers on demand', 'ACI orchestrates full clusters; AKS runs single isolated containers on demand', 'ACI runs single containers with no orchestration; AKS orchestrates clusters with scaling and self-healing', 'ACI is billed per node hour; AKS is billed per second of container execution'], correct: 2, explain: 'ACI is the simplest, fastest way to run an isolated container with no infrastructure to manage; AKS is for more complex workloads that need real orchestration (multiple containers, scaling, self-healing).' },
+    { id: 90, dom: 'd3', obj: '3.1', q: 'A company with a mission-critical application in production needs Microsoft technical support with a guaranteed response time of minutes for critical-severity issues, 24 hours a day. Which Azure support plan tier does it need at minimum?', opts: ['None — that response time isn’t guaranteed by Microsoft', 'Developer', 'Basic (free)', 'Professional Direct or higher'], correct: 3, explain: 'Higher-tier plans like Professional Direct (and above) offer guaranteed response times of minutes for critical-severity incidents; Basic and Developer don’t include a response SLA for production.' },
+    { id: 29, dom: 'd2', obj: '2.3', q: 'Which option best describes Azure Files?', opts: ['A key-value database', 'Unstructured objects accessible only via REST API', 'Fully managed file shares, accessed via SMB/NFS', 'A message queue for decoupling components'], correct: 2, explain: 'Azure Files offers cloud file shares accessible with standard protocols (SMB/NFS), like a traditional file server.' },
+    { id: 3, dom: 'd1', obj: '1.2', q: 'Which cloud characteristic lets resources automatically increase or decrease based on real demand, without manual intervention?', opts: ['Elasticity', 'Fault tolerance', 'High availability', 'Agility'], correct: 0, explain: 'Elasticity is the automatic (and reversible) adjustment of resources based on real-time load.' },
+    { id: 54, dom: 'd3', obj: '3.2', q: 'What is a resource "lock" in Azure?', opts: ['A built-in RBAC role that removes delete permissions from every assignment', 'An encryption setting that makes a disk unreadable outside its resource group', 'A setting that prevents a resource from being accidentally deleted or modified', 'A policy effect that denies any change to a resource after it is created'], correct: 2, explain: 'Resource locks (CanNotDelete / ReadOnly) prevent accidental changes or deletions, independent of the user’s RBAC permissions.' },
+    { id: 76, dom: 'd2', obj: '2.3', q: 'A company stores audit logs that are almost never accessed but must be retained for 7 years by regulation, with maximum tolerance for access latency. Which Blob Storage access tier minimizes cost best?', opts: ['Premium', 'Archive', 'Hot (frequent)', 'Cool (infrequent)'], correct: 1, explain: 'The Archive tier is the cheapest for storage, intended for data that’s rarely accessed and can tolerate hours of latency to retrieve — ideal for long-term regulatory retention.' },
+    { id: 64, dom: 'd1', obj: '1.2', q: 'An application keeps running with no noticeable interruption even if an individual component fails, thanks to active redundancy. Which concept describes this, distinct from disaster recovery?', opts: ['Disaster recovery (DR)', 'Conditional access', 'Fault tolerance', 'A Cost Management budget'], correct: 2, explain: 'Fault tolerance means the system keeps operating with no visible interruption when a failure occurs; DR involves restoring service after a major outage, with some recovery time.' },
+    { id: 103, dom: 'd2', obj: '2.4', q: 'What security problem does Azure Bastion solve for accessing VMs?', opts: ['It provides RDP/SSH to a VM through the portal without a public IP or open inbound ports on the VM', 'It encrypts the VM disks and the traffic between the VM and the portal end to end', 'It applies operating system patches to the VM without requiring a public IP address', 'It removes the need for VM credentials by authenticating sessions with Entra ID only'], correct: 0, explain: 'Azure Bastion eliminates the attack surface of exposing RDP (3389) or SSH (22) directly to the internet — you connect through the portal over a secure, browser-based session instead.' },
+    { id: 126, dom: 'd3', obj: '3.2', q: 'Which Microsoft service provides a unified data governance solution to discover, classify and map an organization’s data across on-premises systems, Azure and other clouds?', opts: ['Azure Policy', 'Microsoft Purview', 'Azure Blueprints', 'Microsoft Defender for Cloud'], correct: 1, explain: 'Microsoft Purview is the data governance and compliance family: it catalogs data assets, classifies sensitive data and maps data lineage across hybrid and multicloud estates.' },
+    { id: 23, dom: 'd2', obj: '2.1', q: 'Which Azure logical container is used to group related resources so they can be managed, billed, or deleted together?', opts: ['Resource group', 'Subscription', 'Tenant', 'Management group'], correct: 0, explain: 'The resource group is the most common grouping and lifecycle unit within a subscription.' },
+    { id: 87, dom: 'd3', obj: '3.1', q: 'A company wants to be able to break down its Azure bill by department (Marketing, Engineering, Sales) even though everyone’s resources are mixed together in the same subscriptions. Which Azure mechanism allows this classification without reorganizing the subscription structure?', opts: ['Availability zones per department', 'Resource locks per department', 'Tags applied to resources', 'ExpressRoute circuits per department'], correct: 2, explain: 'Tags are key-value pairs applied to resources to classify them (e.g. department=Marketing) and then filter/group costs in Cost Management, without restructuring subscriptions or resource groups.' },
+    { id: 91, dom: 'd1', obj: '1.2', q: 'A solution uses App Service (SLA 99.95%) and Azure SQL Database (SLA 99.99%). What is the correct way to calculate the composite SLA of the whole solution?', opts: ['Add the two percentages together', 'Multiply the two SLA values together (0.9995 × 0.9999)', 'Use whichever service has the higher SLA', 'Average the two percentages'], correct: 1, explain: 'Composite SLAs are calculated by multiplying the individual service SLAs, not averaging or adding them — more dependent services lower the overall availability.' },
+    { id: 50, dom: 'd2', obj: '2.4', q: 'What is the "principle of least privilege" as applied to RBAC?', opts: ['Reviewing and removing role assignments automatically after a fixed period', 'Requiring multi-factor authentication before any privileged role is used', 'Assigning built-in roles only at the subscription scope, never on resources', 'Granting each user only the permissions strictly necessary for their task'], correct: 3, explain: 'Least privilege limits each identity’s access to exactly what it needs, reducing the attack surface.' },
+    { id: 33, dom: 'd3', obj: '3.3', q: 'Which format do ARM (Azure Resource Manager) templates use to define infrastructure as code?', opts: ['YAML', 'XML', 'JSON', 'CSV'], correct: 2, explain: 'ARM templates are declarative JSON files that describe the resources to deploy.' },
+    { id: 73, dom: 'd2', obj: '2.2', q: 'A team wants to deploy a web app without managing the operating system or patches, with fast code deployment, and without needing complex container orchestration. Which service is most appropriate?', opts: ['Azure Data Factory', 'A virtual machine with IIS installed manually', 'Azure App Service', 'Azure Kubernetes Service'], correct: 2, explain: 'App Service is PaaS: it hosts web apps without the customer managing the OS or patches, ideal when you don’t need a VM’s fine-grained control or AKS’s full orchestration.' },
+    { id: 142, dom: 'd1', obj: '1.1', q: 'Under the shared responsibility model, which item is the customer’s responsibility in EVERY service model, including SaaS?', opts: ['Classifying and protecting the data, and the accounts and identities that access it', 'Patching the operating system and middleware that run the application', 'Securing the physical hosts, networks and datacenters that run the service', 'Configuring the runtime and the application platform used by the service'], correct: 0, explain: 'Data, endpoints, accounts and access management always stay with the customer, even in SaaS. OS/middleware move to the provider in PaaS and SaaS; physical infrastructure is always the provider’s.' },
+    { id: 131, dom: 'd3', obj: '3.3', q: 'A team finds ARM templates hard to read and maintain. Which Azure-native language offers a simpler, more concise syntax for the same purpose and compiles down to ARM JSON templates?', opts: ['Azure CLI scripts', 'Terraform', 'Bicep', 'PowerShell Desired State Configuration'], correct: 2, explain: 'Bicep is a domain-specific language for Azure infrastructure as code: simpler than ARM JSON, fully supported by Microsoft, and transpiled to ARM templates at deployment time.' },
+    { id: 19, dom: 'd2', obj: '2.1', q: 'What differentiates an availability zone from an Azure region?', opts: ['A zone is a physically separate datacenter within a region', 'A region is a group of zones spread across several countries', 'Zones are paired regions used for disaster recovery', 'They are two names for the same geographic boundary'], correct: 0, explain: 'AZs are physically separate locations with their own power, networking, and cooling within the same region — they protect against datacenter-level failures.' },
+    { id: 65, dom: 'd1', obj: '1.3', q: 'In an IaaS model, whose responsibility is it to apply security patches to the VM’s operating system?', opts: ['The cloud provider’s only', 'Doesn’t apply in IaaS', 'A third-party regulator’s', 'The customer’s'], correct: 3, explain: 'In IaaS the provider manages the physical and virtualization infrastructure, but the customer remains responsible for the OS, patches, data, and configuration inside the VM.' },
+    { id: 22, dom: 'd2', obj: '2.2', q: 'Which networking service enables a private, dedicated connection between an on-premises datacenter and Azure, without crossing the public Internet?', opts: ['Azure Load Balancer', 'Azure Firewall', 'ExpressRoute', 'VPN Gateway'], correct: 2, explain: 'ExpressRoute is a dedicated private connection (not over the Internet), with higher reliability and lower latency than a VPN over the Internet.' },
+    { id: 138, dom: 'd3', obj: '3.4', q: 'During a suspected outage, someone without an Azure account wants a quick public view of the overall health of Azure services worldwide. Where can they look?', opts: ['Azure Service Health in the portal, filtered to all regions', 'The Azure Status page (status.azure.com), no sign-in needed', 'Azure Monitor metrics explorer for the platform namespace', 'Azure Advisor reliability recommendations for the tenant'], correct: 1, explain: 'The Azure Status page shows the global, public health of all Azure services and regions. Service Health, by contrast, is a personalized, signed-in view of issues that affect YOUR resources.' },
+    { id: 71, dom: 'd2', obj: '2.1', q: 'An application needs to stay available even if an entire physical datacenter within the same region fails (power, cooling, network). What should be used?', opts: ['Availability zones', 'Just a single update domain', 'Azure Advisor', 'Availability sets'], correct: 0, explain: 'Availability zones are physically separate locations within a region, with independent power/network/cooling; availability sets protect against failures within a single datacenter, not across separate datacenters.' },
+    { id: 113, dom: 'd3', obj: '3.2', q: 'An Azure Policy is configured to log non-compliant resources for review without blocking their creation. Which policy effect is being used?', opts: ['Modify', 'Audit', 'DeployIfNotExists', 'Deny'], correct: 1, explain: 'Audit logs non-compliant resources without blocking them, useful for understanding impact before switching to Deny. Deny blocks the action outright, Modify changes the request to comply, and DeployIfNotExists automatically deploys a missing related resource.' },
+    { id: 18, dom: 'd1', obj: '1.2', q: 'An online game needs to add servers on weekends (more players) and remove them automatically during the week. Which cloud characteristic solves this?', opts: ['High availability', 'Agility', 'Elasticity', 'Shared responsibility'], correct: 2, explain: 'This is the classic elasticity use case: the system scales up and down automatically based on real demand.' },
+    { id: 25, dom: 'd2', obj: '2.2', q: 'Which Azure service lets you run containers without managing servers or Kubernetes clusters?', opts: ['Azure Container Instances', 'Azure Traffic Manager', 'Azure DNS', 'Azure Virtual Machines'], correct: 0, explain: 'Azure Container Instances (ACI) runs individual containers on demand, with no orchestrator or VMs to manage.' },
+    { id: 132, dom: 'd3', obj: '3.3', q: 'What is the main advantage of a declarative Infrastructure as Code approach (ARM templates, Bicep) compared with a script that runs a sequence of CLI commands?', opts: ['Declarative templates deploy faster because Azure skips resource validation on re-runs', 'Declarative templates can target several subscriptions in a single deployment operation', 'Imperative scripts cannot create dependent resources in the correct order automatically', 'You describe the desired end state and the platform works out the steps, so deployments repeat safely'], correct: 3, explain: 'Declarative IaC states WHAT the environment should look like; Azure Resource Manager determines HOW to reach that state, which makes deployments repeatable and idempotent. Imperative scripts describe each step and are harder to re-run safely.' },
+    { id: 152, dom: 'd2', obj: '2.4', q: 'A user has the Reader role at the subscription scope and the Contributor role on one resource group in that subscription. What can the user do?', opts: ['Read everything in the subscription and modify resources anywhere in it', 'Read everything in the subscription and modify resources only in that resource group', 'Modify resources only in that resource group, with no visibility of the rest of the subscription', 'Read everything in the subscription; the Contributor assignment is ignored because Reader is broader'], correct: 1, explain: 'RBAC is additive: permissions are the union of all assignments. Reader at the subscription gives read access everywhere; Contributor at the resource group adds write access there only.' },
+    { id: 11, dom: 'd1', obj: '1.3', q: 'In the shared responsibility model, as you move from IaaS toward SaaS, what happens to the portion the customer manages?', opts: ['It decreases', 'It increases', 'It stays the same', 'It disappears entirely'], correct: 0, explain: 'In SaaS, Microsoft manages nearly the entire stack; the customer only manages data, identities, and access — customer responsibility shrinks as you move up the service stack.' },
+    { id: 121, dom: 'd3', obj: '3.1', q: 'A company wants to compare what it currently spends running workloads in its own datacenter (hardware, power, cooling, staff) against the estimated cost of running the same workloads in Azure over the next three years. Which tool is designed for this?', opts: ['Total Cost of Ownership (TCO) Calculator', 'Azure Pricing Calculator', 'Azure Advisor cost recommendations', 'Azure Cost Management budgets'], correct: 0, explain: 'The TCO Calculator compares on-premises costs (including hidden ones like power, space and IT labor) with Azure costs over time. The Pricing Calculator only estimates the Azure side of a design.' },
+    { id: 116, dom: 'd2', obj: '2.4', q: 'In the Defense in Depth model, which layer is described as being handled entirely by Microsoft, with no customer responsibility at all?', opts: ['Data layer', 'Identity layer', 'Application layer', 'Physical security layer'], correct: 3, explain: 'Microsoft fully manages the physical security layer (datacenter fencing, biometric access, guards) — the customer never manages this regardless of service model, unlike identity, application, and data, which always carry some customer responsibility.' },
+  ];
+  const bankById = {};
+  quizBank.forEach((item) => { bankById[item.id] = item; });
+
+  const BANK_STATS_KEY = 'az900-bank-stats-v1';
+  const SIM_KEY = 'az900-bank-simulacro-v1';
+  const SIM_SIZE = 50; // real AZ-900: ~40–60 questions, 45 minutes
+
+  // Answers are intentionally in-memory only (not persisted): every fresh page load
+  // starts every question unanswered, while lifetime accuracy stats still accumulate.
+  let bankAnswers = {};
+  let bankStats = {};
+  try { bankStats = JSON.parse(localStorage.getItem(BANK_STATS_KEY) || '{}'); } catch (e) { bankStats = {}; }
+
+  function saveBankStats() { localStorage.setItem(BANK_STATS_KEY, JSON.stringify(bankStats)); }
+
+  function pickSimulacroIds() {
+    const ids = quizBank.map((it) => it.id);
+    for (let i = ids.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [ids[i], ids[j]] = [ids[j], ids[i]];
+    }
+    return ids.slice(0, SIM_SIZE);
+  }
+
+  let simIds = [];
+  try { simIds = JSON.parse(localStorage.getItem(SIM_KEY) || 'null'); } catch (e) { simIds = null; }
+  if (!Array.isArray(simIds) || simIds.length !== SIM_SIZE) simIds = pickSimulacroIds();
+
+  function saveSim() { localStorage.setItem(SIM_KEY, JSON.stringify(simIds)); }
+  saveSim();
+
+  function renderQuizAnswer(id, block) {
+    const rec = bankAnswers[id];
+    const item = bankById[id];
+    if (!rec) return;
+    const btns = block.querySelectorAll('.q-opt');
+    btns.forEach((btn, i) => {
+      btn.disabled = true;
+      if (i === item.correct) btn.classList.add('correct');
+      else if (i === rec.picked) btn.classList.add('incorrect');
+    });
+    block.querySelector('.q-explain').hidden = false;
+    const retry = block.querySelector('.q-retry');
+    if (retry) retry.hidden = false;
+  }
+
+  function buildQuizBlock(item, displayIndex) {
+    const block = document.createElement('div');
+    block.className = 'quiz-q';
+    const stat = bankStats[item.id];
+    const statText = stat && stat.attempts ? stat.correct + '/' + stat.attempts + ' correct' : 'no attempts yet';
+    block.innerHTML =
+      '<span class="q-dom">' + domLabel[item.dom] + '</span>' +
+      '<span class="q-stat"' + (bankAnswers[item.id] ? '' : ' hidden') + '>' + statText + '</span>' +
+      '<p class="q-text">' + displayIndex + '. ' + item.q + '</p>' +
+      '<ul class="q-opts"></ul>' +
+      '<p class="q-explain" hidden><b>Why:</b> ' + item.explain + '</p>' +
+      '<button type="button" class="q-retry" hidden>↺ Retry this question</button>';
+    const ul = block.querySelector('.q-opts');
+    item.opts.forEach((opt, i) => {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'q-opt';
+      btn.textContent = opt;
+      btn.addEventListener('click', () => {
+        if (bankAnswers[item.id]) return;
+        const correct = i === item.correct;
+        bankAnswers[item.id] = { picked: i, correct };
+        const s = bankStats[item.id] || { attempts: 0, correct: 0 };
+        s.attempts += 1;
+        if (correct) s.correct += 1;
+        bankStats[item.id] = s;
+        saveBankStats();
+        renderQuizAnswer(item.id, block);
+        refreshScores();
+        const statEl = block.querySelector('.q-stat');
+        statEl.textContent = s.correct + '/' + s.attempts + ' correct';
+        statEl.hidden = false;
+      });
+      li.appendChild(btn);
+      ul.appendChild(li);
+    });
+    if (bankAnswers[item.id]) renderQuizAnswer(item.id, block);
+    block.querySelector('.q-retry').addEventListener('click', () => {
+      delete bankAnswers[item.id];
+      const fresh = buildQuizBlock(item, displayIndex);
+      block.replaceWith(fresh);
+      refreshScores();
+    });
+    return block;
+  }
+
+  const simList = document.getElementById('sim-list');
+  function renderSimulacro() {
+    simList.innerHTML = '';
+    simIds.forEach((id, idx) => {
+      simList.appendChild(buildQuizBlock(bankById[id], idx + 1));
+    });
+    refreshScores();
+  }
+  function clearBankAnswers(ids) {
+    ids.forEach((id) => { delete bankAnswers[id]; });
+  }
+
+  document.getElementById('sim-new').addEventListener('click', () => {
+    simIds = pickSimulacroIds();
+    clearBankAnswers(simIds);
+    resetSimResults();
+    saveSim();
+    renderSimulacro();
+    resetSimTimer();
+  });
+
+  const bankList = document.getElementById('bank-list');
+  let bankFilter = 'all';
+  function renderBank() {
+    bankList.innerHTML = '';
+    const filtered = quizBank.filter((item) => {
+      if (bankFilter === 'all') return true;
+      if (bankFilter === 'weak') {
+        const s = bankStats[item.id];
+        return s && s.attempts > 0 && (s.correct / s.attempts) < 0.6;
+      }
+      return item.dom === bankFilter;
+    });
+    filtered.forEach((item) => {
+      bankList.appendChild(buildQuizBlock(item, item.id));
+    });
+    refreshScores();
+  }
+  document.getElementById('bank-chips').addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip');
+    if (!chip) return;
+    document.querySelectorAll('#bank-chips .chip').forEach((c) => c.classList.remove('active'));
+    chip.classList.add('active');
+    bankFilter = chip.dataset.filter;
+    renderBank();
+  });
+  document.getElementById('bank-reset').addEventListener('click', () => {
+    if (!window.confirm('Reset all answers in the full bank? This does not erase your correct-answer history, only the marked answers.')) return;
+    clearBankAnswers(quizBank.map((it) => it.id));
+    renderBank();
+  });
+
+  function refreshScores() {
+    const simCorrect = simIds.filter((id) => bankAnswers[id] && bankAnswers[id].correct).length;
+    const simAnswered = simIds.filter((id) => bankAnswers[id]).length;
+    document.getElementById('sim-score').textContent = simCorrect + '/' + simAnswered + ' (' + simAnswered + ' of ' + simIds.length + ')';
+    if (simIds.length && (simFinished || simAnswered === simIds.length)) finishSimulacro(true);
+
+    const totalAnswered = quizBank.filter((it) => bankAnswers[it.id]).length;
+    const totalCorrect = quizBank.filter((it) => bankAnswers[it.id] && bankAnswers[it.id].correct).length;
+    document.getElementById('bank-score').textContent = totalAnswered + '/' + quizBank.length;
+    document.getElementById('bank-correct').textContent = totalCorrect;
+  }
+
+  // ---------- practice-exam results (per domain / per objective) ----------
+  const DOM_META = {
+    d1: { name: 'Cloud concepts', weight: '25–30%' },
+    d2: { name: 'Azure architecture and services', weight: '35–40%' },
+    d3: { name: 'Azure management and governance', weight: '30–35%' },
+  };
+  // Official AZ-900 skills outline, one entry per sub-objective; `study` is what to review when weak.
+  const OBJECTIVES = {
+    '1.1': { name: 'Cloud computing basics', study: 'Shared responsibility model (who patches what in IaaS/PaaS/SaaS); public vs private vs hybrid vs multi-cloud and when each fits; CapEx vs OpEx, consumption-based (pay-as-you-go) pricing and its downsides; what serverless means.' },
+    '1.2': { name: 'Benefits of cloud services', study: 'High availability vs fault tolerance vs disaster recovery; scalability (vertical vs horizontal) vs elasticity; reliability and predictability; SLA math — composite SLA multiplies, 99.9% ≈ 8.7 h/yr, 99.99% ≈ 52 min/yr; availability zones/sets and their SLA tiers.' },
+    '1.3': { name: 'Cloud service types (IaaS/PaaS/SaaS)', study: 'IaaS vs PaaS vs SaaS: control vs responsibility trade-off, canonical examples (VMs, App Service, Microsoft 365) and the use case for each.' },
+    '2.1': { name: 'Core architectural components', study: 'Regions, region pairs, sovereign regions, availability zones vs datacenters; hierarchy resource → resource group → subscription → management group and what each one scopes (billing, policy, RBAC).' },
+    '2.2': { name: 'Compute and networking services', study: 'VMs, scale sets, availability sets, Virtual Desktop; ACI vs AKS vs Container Apps vs App Service vs Functions; VNet/subnets, peering (not transitive), VPN Gateway vs ExpressRoute, Azure DNS; load balancing: Load Balancer (L4) vs Application Gateway (L7/WAF) vs Front Door (global L7) vs Traffic Manager (DNS).' },
+    '2.3': { name: 'Storage services', study: 'Access tiers (hot/cool/cold/archive); redundancy LRS/ZRS/GRS/GZRS and the RA- variants; Blob vs Files vs Queue vs Table vs managed disks; moving data: Azure Migrate, Data Box, AzCopy, Storage Explorer, File Sync; SAS tokens.' },
+    '2.4': { name: 'Identity, access and security', study: 'Microsoft Entra ID vs AD DS; MFA, SSO, passwordless, Conditional Access; External ID (B2B/B2C); RBAC (scope, least privilege) vs Policy; Zero Trust principles; defense-in-depth layers; Defender for Cloud (free vs paid plans); NSG (priority, default rules, ASGs), Azure Firewall, Bastion, DDoS Protection, Key Vault.' },
+    '3.1': { name: 'Cost management', study: 'Factors that affect cost (resource type, consumption, region, egress); Pricing Calculator vs TCO Calculator; Cost Management: budgets, alerts, cost analysis; tags for chargeback; Reserved Instances, Hybrid Benefit, Spot; support plans (Basic / Developer / Standard / Professional Direct).' },
+    '3.2': { name: 'Governance and compliance', study: 'Azure Policy (effects audit/deny/append, compliance scans, initiatives) vs RBAC; resource locks (CanNotDelete / ReadOnly) and inheritance; Microsoft Purview; Trust Center vs Service Trust Portal; Cloud Adoption Framework vs Well-Architected Framework; Blueprints (legacy).' },
+    '3.3': { name: 'Managing and deploying resources', study: 'Azure portal, Cloud Shell, Azure CLI vs PowerShell; Azure Arc (manage on-prem / other clouds from Azure); Infrastructure as Code: ARM templates (JSON), Bicep, Terraform (multi-cloud) — declarative and repeatable.' },
+    '3.4': { name: 'Monitoring tools', study: 'Azure Advisor (5 categories: cost, security, reliability, operational excellence, performance); Service Health (platform incidents, planned maintenance) vs Resource Health (one specific resource); Azure Monitor: metrics, Log Analytics, alerts, Application Insights.' },
+  };
+  const PASS_PCT = 70; // real exam: 700/1000 scaled score
+  const SIM_HISTORY_KEY = 'az900-sim-history-v1';
+  let simHistory = [];
+  try { simHistory = JSON.parse(localStorage.getItem(SIM_HISTORY_KEY) || '[]'); } catch (e) { simHistory = []; }
+  if (!Array.isArray(simHistory)) simHistory = [];
+  function saveSimHistory() { localStorage.setItem(SIM_HISTORY_KEY, JSON.stringify(simHistory.slice(-50))); }
+
+  let simFinished = false;
+  let simHistoryIdx = -1;
+  const simResultsEl = document.getElementById('sim-results');
+
+  function pctOf(c, n) { return n ? Math.round((100 * c) / n) : null; }
+  function levelOf(p) {
+    if (p === null) return 'none';
+    return p >= 80 ? 'good' : p >= PASS_PCT ? 'ok' : p >= 50 ? 'warn' : 'bad';
+  }
+  function computeSimStats() {
+    const perObj = {}, perDom = {}, allObj = {};
+    Object.keys(OBJECTIVES).forEach((k) => { perObj[k] = { n: 0, c: 0, wrong: [] }; allObj[k] = { n: 0, c: 0 }; });
+    Object.keys(DOM_META).forEach((d) => { perDom[d] = { n: 0, c: 0 }; });
+    let correct = 0, answered = 0;
+    simIds.forEach((id, pos) => {
+      const it = bankById[id];
+      const a = bankAnswers[id];
+      const ok = !!(a && a.correct);
+      if (a) answered += 1;
+      if (ok) correct += 1;
+      perObj[it.obj].n += 1;
+      perDom[it.dom].n += 1;
+      if (ok) { perObj[it.obj].c += 1; perDom[it.dom].c += 1; } else { perObj[it.obj].wrong.push(pos + 1); }
+    });
+    quizBank.forEach((it) => {
+      const s = bankStats[it.id];
+      if (s && s.attempts) { allObj[it.obj].n += s.attempts; allObj[it.obj].c += s.correct; }
+    });
+    return { correct, answered, total: simIds.length, perObj, perDom, allObj };
+  }
+  function barRow(labelHtml, c, n, allText) {
+    const p = pctOf(c, n);
+    const lvl = levelOf(p);
+    return '<div class="res-row">' +
+      '<span class="res-label ' + (p === null ? 'none' : '') + '">' + labelHtml + '</span>' +
+      '<span class="res-track"><span class="res-fill ' + lvl + '" style="width:' + (p || 0) + '%"></span><span class="res-passline"></span></span>' +
+      '<span class="res-val ' + (p === null ? 'none' : '') + '">' + (p === null ? '— not in this exam' : c + '/' + n + ' · ' + p + '%') +
+      (allText ? '<span class="res-all">' + allText + '</span>' : '') + '</span></div>';
+  }
+  function renderSimResults(st) {
+    const p = pctOf(st.correct, st.total);
+    const lvl = levelOf(p);
+    const unanswered = st.total - st.answered;
+    let html = '<div class="res-head"><span class="res-big">' + st.correct + '/' + st.total + '</span>' +
+      '<span class="res-pct res-' + (lvl === 'good' || lvl === 'ok' ? 'good' : lvl === 'warn' ? 'warn' : 'bad') + '">' + p + '%</span></div>';
+    html += '<p class="res-verdict">' + (p >= PASS_PCT ? '✔ Above the ~' + PASS_PCT + '% pass line (700/1000 on the real exam).' : '✘ Below the ~' + PASS_PCT + '% pass line (700/1000 on the real exam) — ' + (PASS_PCT - p) + ' points short.') +
+      (unanswered ? ' ' + unanswered + ' unanswered counted as wrong.' : '') + '</p>';
+    if (simHistory.length > 1) {
+      html += '<p class="res-trend mono">Exam history: ' + simHistory.map((h) => pctOf(h.correct, h.total) + '%').join(' → ') + '</p>';
+    }
+    html += '<h3 class="res-title">By domain (weight on the real exam)</h3>';
+    html += '<div class="res-row head"><span>Domain</span><span class="res-track" style="border:0;background:none"></span><span>This exam</span></div>';
+    Object.keys(DOM_META).forEach((d) => {
+      const s = st.perDom[d];
+      html += barRow(DOM_META[d].name + '<em>' + DOM_META[d].weight + '</em>', s.c, s.n);
+    });
+    const objKeys = Object.keys(OBJECTIVES);
+    const scored = objKeys.map((k) => {
+      const s = st.perObj[k], a = st.allObj[k];
+      return { k, p: pctOf(s.c, s.n), pAll: pctOf(a.c, a.n), s, a };
+    });
+    scored.sort((x, y) => {
+      const px = x.p === null ? 999 : x.p, py = y.p === null ? 999 : y.p;
+      if (px !== py) return px - py;
+      const ax = x.pAll === null ? 999 : x.pAll, ay = y.pAll === null ? 999 : y.pAll;
+      return ax - ay || x.k.localeCompare(y.k);
+    });
+    html += '<h3 class="res-title">By objective — weakest first</h3>';
+    html += '<div class="res-row head"><span>Objective</span><span class="res-track" style="border:0;background:none"></span><span>This exam · all-time</span></div>';
+    scored.forEach((o) => {
+      const allText = o.pAll === null ? 'all-time: no attempts yet' : 'all-time ' + o.a.c + '/' + o.a.n + ' · ' + o.pAll + '%';
+      html += barRow('<span class="res-code">' + o.k + '</span>' + OBJECTIVES[o.k].name, o.s.c, o.s.n, allText);
+    });
+    const weak = scored.filter((o) => o.p !== null && o.p < 80).slice(0, 4);
+    html += '<h3 class="res-title">Study next</h3>';
+    if (!weak.length) {
+      html += '<p class="res-note">Nothing below 80% in this exam. Run another practice exam to confirm — objectives not covered this time show "not in this exam" above.</p>';
+    } else {
+      html += '<ul class="res-study">' + weak.map((o) => {
+        const missed = o.s.wrong.map((pos) => '<a href="#" class="res-jump" data-pos="' + pos + '">Q' + pos + '</a>').join(' ');
+        return '<li><b>' + o.k + ' ' + OBJECTIVES[o.k].name + '</b> — ' + o.s.c + '/' + o.s.n + ' (' + o.p + '%)' +
+          (o.pAll !== null ? ', all-time ' + o.pAll + '%' : '') + '<br>' + OBJECTIVES[o.k].study +
+          '<span class="res-missed">Missed in this exam: ' + missed + ' — click to jump and re-read the explanation, or use the Weak filter in the full bank.</span></li>';
+      }).join('') + '</ul>';
+    }
+    html += '<p class="res-note">Domain 2 is the largest chunk of the real exam (35–40%) — a weak Domain 2 costs more points than a weak Domain 1 or 3.</p>';
+    simResultsEl.innerHTML = html;
+  }
+  function recordSimHistory(st) {
+    const entry = { ts: Date.now(), correct: st.correct, total: st.total,
+      dom: { d1: [st.perDom.d1.c, st.perDom.d1.n], d2: [st.perDom.d2.c, st.perDom.d2.n], d3: [st.perDom.d3.c, st.perDom.d3.n] } };
+    if (simHistoryIdx >= 0 && simHistory[simHistoryIdx]) simHistory[simHistoryIdx] = entry;
+    else { simHistory.push(entry); simHistoryIdx = simHistory.length - 1; }
+    saveSimHistory();
+  }
+  function finishSimulacro(auto) {
+    const st = computeSimStats();
+    if (!auto && !simFinished && st.answered < st.total) {
+      if (!window.confirm((st.total - st.answered) + ' questions are still unanswered and will count as wrong. Finish the exam now?')) return;
+    }
+    const firstTime = !simFinished;
+    if (firstTime && simTimer.running) {
+      simTimer.running = false; saveSimTimer(); renderSimTimer(); startSimTimerInterval();
+    }
+    simFinished = true;
+    recordSimHistory(st);
+    renderSimResults(st);
+    simResultsEl.hidden = false;
+    if (firstTime) simResultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function resetSimResults() {
+    simFinished = false;
+    simHistoryIdx = -1;
+    simResultsEl.hidden = true;
+    simResultsEl.innerHTML = '';
+  }
+  document.getElementById('sim-finish').addEventListener('click', () => finishSimulacro(false));
+  simResultsEl.addEventListener('click', (e) => {
+    const a = e.target.closest('.res-jump');
+    if (!a) return;
+    e.preventDefault();
+    const block = simList.querySelectorAll('.quiz-q')[Number(a.dataset.pos) - 1];
+    if (block) block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  renderSimulacro();
+  renderBank();
+
+  const subtabBtns = Array.from(document.querySelectorAll('.subtab-btn'));
+  const subpanels = Array.from(document.querySelectorAll('[data-subpanel]'));
+  subtabBtns.forEach((b) => b.addEventListener('click', () => {
+    subtabBtns.forEach((x) => x.classList.toggle('active', x === b));
+    subpanels.forEach((p) => { p.hidden = p.dataset.subpanel !== b.dataset.subview; });
+  }));
+
+  // ---------- flashcards ----------
+  const flashcards = [
+    ['IaaS', 'Infrastructure as a service: VMs, networking, and storage; you manage the OS and apps.', 'd1'],
+    ['PaaS', 'Platform as a service: the provider manages the runtime; you only handle the code and data.', 'd1'],
+    ['SaaS', 'Complete, ready-to-use software; the provider manages everything.', 'd1'],
+    ['CapEx vs OpEx', 'CapEx: your own upfront investment. OpEx: pay-as-you-go, no upfront investment.', 'd1'],
+    ['Elasticity', 'Automatic adjustment of resources up and down based on real demand.', 'd1'],
+    ['Vertical scaling', 'Adding more CPU/RAM to the same instance (scale up).', 'd1'],
+    ['Horizontal scaling', 'Adding more instances in parallel (scale out).', 'd1'],
+    ['Shared responsibility model', 'Data and identities are always the customer’s responsibility; the rest varies by IaaS/PaaS/SaaS.', 'd1'],
+    ['Region vs Availability Zone', 'Region: a geographic area with several datacenters. AZ: a physically separate datacenter within a region.', 'd2'],
+    ['Region pair', 'Two regions in the same geography used for replication and disaster recovery.', 'd2'],
+    ['Resource group', 'A logical container to group and manage related resources as a unit.', 'd2'],
+    ['Azure Resource Manager (ARM)', 'The management layer that processes every request on Azure resources.', 'd2'],
+    ['Azure Functions', 'Serverless compute: runs only in response to an event, billed per execution.', 'd2'],
+    ['Azure App Service', 'PaaS for hosting web apps without managing servers.', 'd2'],
+    ['AKS', 'Azure Kubernetes Service: managed container orchestration.', 'd2'],
+    ['Blob Storage', 'Storage for unstructured objects: images, video, backups.', 'd2'],
+    ['VNet', 'A private virtual network within Azure to isolate and connect resources.', 'd2'],
+    ['ExpressRoute', 'A dedicated private connection to Azure, bypassing the public Internet.', 'd2'],
+    ['Cosmos DB', 'A globally distributed, multi-model NoSQL database.', 'd2'],
+    ['Microsoft Entra ID', 'Azure’s identity and access service — authenticates users and secures resources.', 'd3'],
+    ['RBAC', 'Controls what a user can do on a specific resource, based on their assigned role.', 'd3'],
+    ['Azure Policy vs RBAC', 'Policy controls how resources are configured. RBAC controls who can act on them.', 'd3'],
+    ['Management group', 'A hierarchy level above subscriptions for applying governance at scale.', 'd3'],
+    ['SLA', 'A measurable contractual commitment to service availability (e.g. 99.9%).', 'd3']
+  ];
+  const FC_KEY = 'az900-flashcards-v1';
+  let fcMastered = {};
+  try { fcMastered = JSON.parse(localStorage.getItem(FC_KEY) || '{}'); } catch (e) { fcMastered = {}; }
+  let fcOrder = flashcards.map((_, i) => i);
+  let fcPos = 0;
+  let fcFlipped = false;
+
+  const fcCard = document.getElementById('fc-card');
+  const fcFrontText = document.getElementById('fc-front-text');
+  const fcBackText = document.getElementById('fc-back-text');
+  const fcTagFront = document.getElementById('fc-tag-front');
+  const fcTagBack = document.getElementById('fc-tag-back');
+  const fcIndexEl = document.getElementById('fc-index');
+  const fcMasteredBtn = document.getElementById('fc-mastered-btn');
+
+  document.getElementById('fc-total').textContent = flashcards.length;
+
+  function renderFlashcard() {
+    const realIndex = fcOrder[fcPos];
+    const [front, back, dom] = flashcards[realIndex];
+    fcFrontText.textContent = front;
+    fcBackText.textContent = back;
+    fcTagFront.textContent = domLabel[dom];
+    fcTagBack.textContent = domLabel[dom];
+    fcFlipped = false;
+    fcCard.classList.remove('flipped');
+    fcCard.classList.toggle('mastered', !!fcMastered[realIndex]);
+    fcIndexEl.textContent = fcPos + 1;
+    fcMasteredBtn.classList.toggle('on', !!fcMastered[realIndex]);
+    fcMasteredBtn.textContent = fcMastered[realIndex] ? '✓ Mastered' : 'Mark as mastered';
+    document.getElementById('fc-mastered').textContent = Object.values(fcMastered).filter(Boolean).length;
+  }
+
+  fcCard.addEventListener('click', () => {
+    fcFlipped = !fcFlipped;
+    fcCard.classList.toggle('flipped', fcFlipped);
+  });
+  document.getElementById('fc-next').addEventListener('click', () => {
+    fcPos = (fcPos + 1) % fcOrder.length;
+    renderFlashcard();
+  });
+  document.getElementById('fc-prev').addEventListener('click', () => {
+    fcPos = (fcPos - 1 + fcOrder.length) % fcOrder.length;
+    renderFlashcard();
+  });
+  document.getElementById('fc-shuffle').addEventListener('click', () => {
+    for (let i = fcOrder.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [fcOrder[i], fcOrder[j]] = [fcOrder[j], fcOrder[i]];
+    }
+    fcPos = 0;
+    renderFlashcard();
+  });
+  fcMasteredBtn.addEventListener('click', () => {
+    const realIndex = fcOrder[fcPos];
+    fcMastered[realIndex] = !fcMastered[realIndex];
+    localStorage.setItem(FC_KEY, JSON.stringify(fcMastered));
+    renderFlashcard();
+  });
+  renderFlashcard();
+
+  // ---------- notes ----------
+  const NOTES_KEY = 'az900-notes-v1';
+  let notes = {};
+  try { notes = JSON.parse(localStorage.getItem(NOTES_KEY) || '{}'); } catch (e) { notes = {}; }
+  const notesList = document.getElementById('notes-list');
+  let noteTimers = {};
+
+  weeks.forEach((wk) => {
+    const block = document.createElement('div');
+    block.className = 'note-week';
+    block.innerHTML =
+      '<div class="note-week-head">' +
+        '<span><span class="n">WEEK ' + wk.n + '</span>' + wk.title + '</span>' +
+        '<span class="save-state mono" id="note-save-' + wk.n + '"></span>' +
+      '</div>' +
+      '<textarea id="note-text-' + wk.n + '" placeholder="Jot down anything you want to remember from this week…"></textarea>';
+    notesList.appendChild(block);
+    const textarea = block.querySelector('textarea');
+    textarea.value = notes[wk.n] || '';
+    const saveEl = block.querySelector('.save-state');
+    textarea.addEventListener('input', () => {
+      clearTimeout(noteTimers[wk.n]);
+      noteTimers[wk.n] = setTimeout(() => {
+        notes[wk.n] = textarea.value;
+        localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+        const now = new Date();
+        saveEl.textContent = 'saved ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      }, 500);
+    });
+  });
+
+  // ---------- practice exam timer ----------
+  const SIM_TIMER_KEY = 'az900-sim-timer-v1';
+  const SIM_TIMER_TOTAL = 45 * 60;
+  let simTimer = { remaining: SIM_TIMER_TOTAL, running: false, lastTick: null };
+  try {
+    const saved = JSON.parse(localStorage.getItem(SIM_TIMER_KEY) || 'null');
+    if (saved && typeof saved.remaining === 'number' && saved.remaining <= SIM_TIMER_TOTAL) {
+      simTimer = saved;
+      if (simTimer.running && simTimer.lastTick) {
+        const elapsed = Math.floor((Date.now() - simTimer.lastTick) / 1000);
+        simTimer.remaining = Math.max(0, simTimer.remaining - elapsed);
+        if (simTimer.remaining === 0) simTimer.running = false;
+      }
+    }
+  } catch (e) { /* keep default */ }
+
+  const simTimerEl = document.getElementById('sim-timer');
+  const simTimerToggle = document.getElementById('sim-timer-toggle');
+  let simTimerInterval = null;
+
+  function saveSimTimer() {
+    localStorage.setItem(SIM_TIMER_KEY, JSON.stringify(simTimer));
+  }
+  function formatTimer(sec) {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+  }
+  function renderSimTimer() {
+    simTimerEl.textContent = formatTimer(simTimer.remaining);
+    simTimerEl.classList.toggle('expired', simTimer.remaining === 0);
+    simTimerToggle.textContent = simTimer.running ? '⏸ Pause' : (simTimer.remaining === SIM_TIMER_TOTAL ? '▶ Start' : '▶ Resume');
+  }
+  function tickSimTimer() {
+    if (!simTimer.running) return;
+    simTimer.remaining = Math.max(0, simTimer.remaining - 1);
+    simTimer.lastTick = Date.now();
+    if (simTimer.remaining === 0) {
+      simTimer.running = false;
+      clearInterval(simTimerInterval);
+    }
+    saveSimTimer();
+    renderSimTimer();
+  }
+  function startSimTimerInterval() {
+    clearInterval(simTimerInterval);
+    if (simTimer.running) simTimerInterval = setInterval(tickSimTimer, 1000);
+  }
+  function resetSimTimer() {
+    clearInterval(simTimerInterval);
+    simTimer = { remaining: SIM_TIMER_TOTAL, running: false, lastTick: null };
+    saveSimTimer();
+    renderSimTimer();
+  }
+  simTimerToggle.addEventListener('click', () => {
+    simTimer.running = !simTimer.running;
+    simTimer.lastTick = Date.now();
+    saveSimTimer();
+    renderSimTimer();
+    startSimTimerInterval();
+  });
+  renderSimTimer();
+  startSimTimerInterval();
+
+  // ---------- export / import ----------
+  const SYNCED_KEYS = [
+    'az900-checklist-v1', 'az900-active-view',
+    'az900-bank-stats-v1', 'az900-bank-simulacro-v1', 'az900-flashcards-v1',
+    'az900-notes-v1', 'az900-sim-timer-v1', 'az900-sim-history-v1'
+  ];
+  function collectState() {
+    const obj = {};
+    SYNCED_KEYS.forEach((k) => {
+      const v = localStorage.getItem(k);
+      if (v !== null) obj[k] = v;
+    });
+    return obj;
+  }
+  function applyState(obj) {
+    SYNCED_KEYS.forEach((k) => {
+      if (Object.prototype.hasOwnProperty.call(obj, k)) localStorage.setItem(k, obj[k]);
+    });
+  }
+
+  function setBackupStatus(text) { document.getElementById('backup-status').textContent = text; }
+
+  document.getElementById('backup-export').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(collectState(), null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'az900-progress-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  const importFileInput = document.getElementById('backup-import-file');
+  document.getElementById('backup-import-btn').addEventListener('click', () => importFileInput.click());
+  importFileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      let obj;
+      try { obj = JSON.parse(reader.result); } catch (err) { alert('The file is not valid JSON.'); return; }
+      if (typeof obj !== 'object' || obj === null) { alert('The file doesn’t have the expected format.'); return; }
+      if (!confirm('This will replace your current progress in this browser. Continue?')) return;
+      applyState(obj);
+      location.reload();
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  });
+
+  setBackupStatus('Progress is saved automatically in this browser');
+})();
+</script>

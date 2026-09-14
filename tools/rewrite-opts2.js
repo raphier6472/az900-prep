@@ -1,0 +1,16 @@
+module.exports = {
+ 28: ['Azure Front Door (global)', '*Azure Application Gateway', 'Azure Firewall Premium', 'Azure Load Balancer'],
+ 5: ['Less dependence on internet connectivity', 'Lower latency than a local datacenter', '*Simplified high availability and disaster recovery', 'Full physical control over the hardware'],
+ 84: ['*A budget in Azure Cost Management', 'An Azure Advisor cost alert', 'An Azure Service Health alert', 'An Azure Monitor metric alert'],
+ 109: ['*A Shared Access Signature (SAS) scoped to that container with an expiry', 'A storage account access key shared with the app and rotated monthly', 'A Storage Blob Data Contributor role assignment on the storage account', 'A private endpoint on the storage account restricted to the app’s VNet'],
+ 82: ['Azure Policy to grant VM creation rights, and RBAC to restrict region and size', 'RBAC alone — a custom role can restrict both the action and the allowed regions', 'Azure Policy alone — it can grant the create action and restrict the SKU', '*RBAC to grant permission to create VMs, and Azure Policy to restrict region and size'],
+ 45: ['*A contractual commitment to service availability', 'A support plan with guaranteed response times', 'A published security and compliance baseline', 'A pricing agreement for reserved capacity'],
+ 133: ['*Azure PowerShell (the Az module)', 'Azure CLI (the az command)', 'Azure Cloud Shell (Bash only)', 'Azure Resource Manager REST API'],
+ 104: ['Priority 200, because higher numbers take precedence over lower ones', 'Whichever rule was created most recently, regardless of priority', '*Priority 100, because lower numbers are evaluated first and take precedence', 'Both rules apply, and the more restrictive one wins for that traffic'],
+ 13: ['Rapid elasticity', '*Dedicated hardware per customer', 'Broad network access', 'On-demand self-service'],
+ 35: ['Azure Load Balancer', '*Azure Traffic Manager', 'Azure Application Gateway', 'Azure VPN Gateway'],
+ 87: ['Availability zones per department', 'Resource locks per department', '*Tags applied to resources', 'ExpressRoute circuits per department'],
+ 19: ['*A zone is a physically separate datacenter within a region', 'A region is a group of zones spread across several countries', 'Zones are paired regions used for disaster recovery', 'They are two names for the same geographic boundary'],
+ 132: ['Declarative templates deploy faster because Azure skips resource validation on re-runs', 'Declarative templates can target several subscriptions in a single deployment operation', 'Imperative scripts cannot create dependent resources in the correct order automatically', '*You describe the desired end state and the platform works out the steps, so deployments repeat safely'],
+ 116: ['Data layer', 'Identity layer', 'Application layer', '*Physical security layer'],
+};
