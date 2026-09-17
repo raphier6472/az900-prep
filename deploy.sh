@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-# Build and deploy the study page to REDACTED-CT (nginx static site).
-# Override any of these via environment, e.g. REMOTE_PATH=/var/www/html/index.html ./deploy.sh
+# Build and deploy the study page to your nginx host.
+# Set REMOTE, KEY, and URL via environment, e.g.:
+#   REMOTE=user@host KEY=~/.ssh/your_deploy_key URL=http://host/az900/ ./deploy.sh
 set -euo pipefail
 cd "$(dirname "$0")"
 
-REMOTE="${REMOTE:-root@REDACTED-HOST}"
-KEY="${KEY:-$HOME/.ssh/REDACTED-KEY}"
+: "${REMOTE:?set REMOTE, e.g. user@host}"
+: "${KEY:?set KEY, e.g. ~/.ssh/your_deploy_key}"
+: "${URL:?set URL, e.g. http://host/az900/}"
 REMOTE_PATH="${REMOTE_PATH:-/var/www/html/az900/index.html}"
-URL="${URL:-http://REDACTED-HOST/az900/}"
 SSH=(ssh -i "$KEY" -o IdentitiesOnly=yes "$REMOTE")
 
 python3 build.py

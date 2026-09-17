@@ -2,7 +2,7 @@
 
 Single-file study web app for the **Microsoft AZ-900 (Azure Fundamentals)** exam. Static HTML/CSS/JS,
 no backend, progress kept in the browser's `localStorage` (export/import as JSON from the page).
-Served by nginx on homelab REDACTED-CT (`REDACTED-HOST`).
+Served by nginx on a small homelab LXC container.
 
 Exam passed on **2026-09-13** — this repo is the archived final state (tag `az900-final`). The same
 engine was forked for CompTIA Linux+ in the `linuxplus-prep` repo.
@@ -14,7 +14,7 @@ engine was forked for CompTIA Linux+ in the `linuxplus-prep` repo.
 | `src/az900-template.html` | The app. Master source; edit this, never the built file. Fonts are `__PLEX*__` placeholders. |
 | `src/fonts/` | IBM Plex Mono/Sans `.woff2` and their base64 (`.b64`) used by the build. |
 | `build.py` | `src/` → `dist/index.html` (fonts inlined) + checks: no placeholder left, every `<script>` block passes `node --check`. |
-| `deploy.sh` | `build.py` → `scp` to REDACTED-CT → `nginx -t && reload` → md5 local/remote/live must match. |
+| `deploy.sh` | `build.py` → `scp` to the target host → `nginx -t && reload` → md5 local/remote/live must match. |
 | `tools/` | Node scripts used to shape the question bank (see below). They read/write scratch files in `work/` (git-ignored). |
 | `qa/` | Browser snippets for `agent-browser eval --stdin` that answer a whole practice exam and read the results panel. |
 | `legacy/` | The server-side progress backend (`az900-api.py` + unit) that was removed from the CT on 2026-08-18. Reference only. |
@@ -23,11 +23,11 @@ engine was forked for CompTIA Linux+ in the `linuxplus-prep` repo.
 
 ```bash
 python3 build.py                                  # → dist/index.html
-./deploy.sh                                       # default target: /var/www/html/az900/index.html → http://REDACTED-HOST/az900/
-REMOTE_PATH=/var/www/html/index.html URL=http://REDACTED-HOST/ ./deploy.sh   # serve at the site root instead
+REMOTE=user@host KEY=~/.ssh/your_deploy_key ./deploy.sh   # default remote path: /var/www/html/az900/index.html
+REMOTE=user@host KEY=~/.ssh/your_deploy_key REMOTE_PATH=/var/www/html/index.html URL=http://host/ ./deploy.sh   # serve at the site root instead
 ```
-`deploy.sh` needs `~/.ssh/REDACTED-KEY` (root on REDACTED-CT) and exits non-zero unless the
-live page's md5 equals the local build.
+`deploy.sh` needs `REMOTE`, `KEY`, and `URL` set to your own host/key/public URL, and exits non-zero
+unless the live page's md5 equals the local build.
 
 ## Features
 
@@ -58,7 +58,7 @@ Each `quizBank` item: `{ id, dom: 'd1'|'d2'|'d3', obj: '1.1'…'3.4', q, opts[4]
 
 Domain counts at final state: d1 = 39, d2 = 67, d3 = 54 (Domain 2 is 35–40 % of the real exam).
 
-## REDACTED-CT
+## Hosting
 
-Debian 12 LXC on Proxmox, 1 vCPU / 512 MB, nginx serving `/var/www/html`. Included in the daily
-Proxmox backup job. `charset utf-8;` is set in the default server block.
+Debian 12 LXC on Proxmox, 1 vCPU / 512 MB, nginx serving `/var/www/html`. `charset utf-8;` is set in
+the default server block.
